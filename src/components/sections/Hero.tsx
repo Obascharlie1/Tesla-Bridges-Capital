@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, TrendingUp, TrendingDown } from 'lucide-react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { chartData, portfolioAssets } from '@/data'
 
@@ -107,13 +108,17 @@ export function Hero() {
               transition={{ duration: 0.4, delay: 0.3 }}
               className="flex flex-col xs:flex-row sm:flex-row gap-3 mb-10 items-stretch sm:items-start"
             >
-              <Button size="lg" className="justify-center">
-                Start Trading
-                <ArrowRight size={16} />
-              </Button>
-              <Button variant="outline" size="lg" className="justify-center !border-white/30 !text-white hover:!bg-white/10">
-                View Live Demo
-              </Button>
+              <Link href="/auth/register">
+                <Button size="lg" className="justify-center">
+                  Start Trading
+                  <ArrowRight size={16} />
+                </Button>
+              </Link>
+              <Link href="/auth/login">
+                <Button variant="outline" size="lg" className="justify-center !border-white/30 !text-white hover:!bg-white/10">
+                  Sign In
+                </Button>
+              </Link>
             </motion.div>
 
             {/* Hard stats row */}

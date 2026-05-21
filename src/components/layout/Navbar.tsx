@@ -61,12 +61,14 @@ export function Navbar() {
             <div className="hidden md:flex items-center gap-3">
               <ThemeToggle />
               <Link
-                href="#"
+                href="/auth/login"
                 className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-dark-base dark:hover:text-light-base transition-colors duration-200"
               >
                 Sign In
               </Link>
-              <Button size="sm">Get Started</Button>
+              <Link href="/auth/register">
+                <Button size="sm">Get Started</Button>
+              </Link>
             </div>
 
             {/* Mobile actions */}
@@ -113,8 +115,12 @@ export function Navbar() {
                 </motion.div>
               ))}
               <div className="pt-3 flex flex-col gap-2 border-t border-light-border dark:border-dark-border mt-2">
-                <Button variant="outline" size="sm" className="w-full">Sign In</Button>
-                <Button size="sm" className="w-full">Get Started Free</Button>
+                <Link href="/auth/login" onClick={() => setMobileOpen(false)}>
+                  <Button variant="outline" size="sm" className="w-full">Sign In</Button>
+                </Link>
+                <Link href="/auth/register" onClick={() => setMobileOpen(false)}>
+                  <Button size="sm" className="w-full">Get Started Free</Button>
+                </Link>
               </div>
             </nav>
           </motion.div>
