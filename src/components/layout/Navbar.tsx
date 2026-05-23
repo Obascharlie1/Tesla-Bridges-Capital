@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { Menu, X, TrendingUp } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { navLinks } from '@/data'
 import { cn } from '@/lib/utils'
@@ -34,13 +35,15 @@ export function Navbar() {
         )}>
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 bg-red-primary flex items-center justify-center">
-                <TrendingUp size={16} className="text-dark-base" strokeWidth={2.5} />
-              </div>
-              <span className="font-bold text-lg text-dark-base dark:text-light-base tracking-tight">
-                Quantum<span className="gradient-text">Vest</span>
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo.png"
+                alt="BIT-TESLA"
+                width={130}
+                height={22}
+                className="h-7 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop nav */}

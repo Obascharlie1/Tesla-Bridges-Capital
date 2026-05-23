@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { TrendingUp } from 'lucide-react'
+import Image from 'next/image'
 
 const footerLinks = {
   Product: ['Features', 'Markets', 'Pricing', 'API', 'Changelog'],
@@ -50,13 +50,14 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-md bg-red-primary flex items-center justify-center">
-                <TrendingUp size={16} className="text-dark-base" strokeWidth={2.5} />
-              </div>
-              <span className="font-bold text-lg text-dark-base dark:text-light-base tracking-tight">
-                Quantum<span className="gradient-text">Vest</span>
-              </span>
+            <Link href="/" className="flex items-center mb-4">
+              <Image
+                src="/images/logo.png"
+                alt="BIT-TESLA"
+                width={130}
+                height={22}
+                className="h-7 w-auto"
+              />
             </Link>
             <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 max-w-xs">
               Institutional-grade investment intelligence for everyone. Build wealth with AI-powered market analysis.
@@ -96,10 +97,10 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-light-border dark:border-dark-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            © 2026 QuantumVest Technologies Inc. All rights reserved.
+            © 2026 BIT-TESLA Technologies Inc. All rights reserved.
           </p>
           <p className="text-xs text-slate-500 dark:text-slate-400 text-center sm:text-right max-w-md">
-            QuantumVest is registered with the SEC and FINRA. Investing involves risk. Past performance does not guarantee future results.
+            BIT-TESLA is registered with the SEC and FINRA. Investing involves risk. Past performance does not guarantee future results.
           </p>
         </div>
       </div>

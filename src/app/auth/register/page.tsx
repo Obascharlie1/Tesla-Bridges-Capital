@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff, ArrowRight, ArrowLeft, Loader2, Check } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
@@ -144,11 +145,14 @@ export default function RegisterPage() {
   return (
     <div className="w-full max-w-sm">
       {/* Mobile logo */}
-      <div className="lg:hidden flex items-center gap-2 mb-8">
-        <div className="w-8 h-8 bg-red-primary flex items-center justify-center">
-          <span className="text-white font-bold text-sm">Q</span>
-        </div>
-        <span className="font-bold text-dark-base dark:text-white text-base tracking-tight">QuantumVest</span>
+      <div className="lg:hidden flex items-center mb-8">
+        <Image
+          src="/images/logo.png"
+          alt="BIT-TESLA"
+          width={120}
+          height={20}
+          className="h-6 w-auto dark:brightness-0 dark:invert"
+        />
       </div>
 
       <div className="mb-6">

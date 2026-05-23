@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -21,11 +22,14 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full px-12 py-10">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 mb-auto">
-            <div className="w-9 h-9 bg-red-primary flex items-center justify-center">
-              <span className="text-white font-bold text-base">Q</span>
-            </div>
-            <span className="font-bold text-white text-lg tracking-tight">QuantumVest</span>
+          <Link href="/" className="flex items-center mb-auto">
+            <Image
+              src="/images/logo.png"
+              alt="BIT-TESLA"
+              width={130}
+              height={22}
+              className="h-7 w-auto brightness-0 invert"
+            />
           </Link>
 
           {/* Headline */}
@@ -53,7 +57,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
           {/* Bottom note */}
           <p className="text-xs text-slate-500 mt-12">
-            &copy; {new Date().getFullYear()} QuantumVest. All rights reserved.
+            &copy; {new Date().getFullYear()} BIT-TESLA. All rights reserved.
           </p>
         </div>
       </div>

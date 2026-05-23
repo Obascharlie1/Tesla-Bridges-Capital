@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "QuantumVest — AI-Powered Investment Platform",
+  title: "BIT-TESLA — AI-Powered Investment Platform",
   description:
     "Access institutional-grade trading tools, real-time analytics, and automated portfolio management. Trusted by 10M+ investors.",
 };
