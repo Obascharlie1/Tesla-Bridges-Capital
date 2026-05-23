@@ -12,6 +12,7 @@ import { BTCSection } from "@/components/sections/BTCSection";
 import { FeatureImages } from "@/components/sections/FeatureImages";
 import { MarketAnalysis } from "@/components/sections/MarketAnalysis";
 import { UpToTheMinute } from "@/components/sections/UpToTheMinute";
+import { PeopleSlideshow } from "@/components/sections/PeopleSlideshow";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { LiveTradeFeed } from "@/components/ui/LiveTradeFeed";
 
@@ -29,6 +30,7 @@ export default function Home() {
         <DashboardPreview />
         <HowItWorks />
         <InvestmentPlans />
+        <PeopleSlideshow />
         <Testimonials />
         <Security />
         <UpToTheMinute />

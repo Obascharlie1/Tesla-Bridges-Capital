@@ -27,18 +27,18 @@ const testimonials = [
 
 const videos = [
   {
-    src: 'https://home.quantumtraderslink.com/wp-content/uploads/2022/01/WhatsApp-Video-2022-01-14-at-21.30.24.mp4',
-    thumb: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop',
+    youtubeId: 'bqPSFw1eiNc',
+    thumb: 'https://img.youtube.com/vi/bqPSFw1eiNc/maxresdefault.jpg',
     label: 'Client Testimonial',
   },
   {
-    src: 'https://home.quantumtraderslink.com/wp-content/uploads/2022/01/WhatsApp-Video-2022-01-14-at-21.27.40.mp4',
-    thumb: 'https://images.unsplash.com/photo-1642790551116-18a150d975b7?w=600&h=400&fit=crop',
+    youtubeId: '86rPBAnRCHc',
+    thumb: 'https://img.youtube.com/vi/86rPBAnRCHc/maxresdefault.jpg',
     label: 'Investor Story',
   },
   {
-    src: 'https://home.quantumtraderslink.com/wp-content/uploads/2022/01/WhatsApp-Video-2022-01-14-at-21.27.32.mp4',
-    thumb: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=400&fit=crop',
+    youtubeId: 'SRZ48WTHohw',
+    thumb: 'https://img.youtube.com/vi/SRZ48WTHohw/maxresdefault.jpg',
     label: 'Trading Results',
   },
 ]
@@ -113,7 +113,7 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              onClick={() => setActiveVideo(v.src)}
+              onClick={() => setActiveVideo(v.youtubeId)}
               className="relative rounded-xl overflow-hidden group cursor-pointer w-full text-left"
             >
               {/* Thumbnail */}
@@ -164,13 +164,15 @@ export function Testimonials() {
               className="relative w-full max-w-3xl rounded-xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <video
-                src={activeVideo}
-                controls
-                autoPlay
-                className="w-full rounded-xl"
-                style={{ maxHeight: '70vh' }}
-              />
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1`}
+                  className="absolute inset-0 w-full h-full rounded-xl"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title="Video"
+                />
+              </div>
               <button
                 onClick={() => setActiveVideo(null)}
                 className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 hover:bg-black flex items-center justify-center text-white transition-colors"

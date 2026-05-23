@@ -4,10 +4,8 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Play, X, ArrowRight } from 'lucide-react'
 
-const VIDEO_SRC =
-  'https://home.quantumtraderslink.com/wp-content/uploads/2022/01/WhatsApp-Video-2022-01-14-at-21.30.24.mp4'
-const THUMB =
-  'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=500&fit=crop'
+const YOUTUBE_ID = 'SRZ48WTHohw'
+const THUMB = `https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`
 
 export function MarketAnalysis() {
   const [open, setOpen] = useState(false)
@@ -123,13 +121,15 @@ export function MarketAnalysis() {
               className="relative w-full max-w-3xl rounded-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <video
-                src={VIDEO_SRC}
-                controls
-                autoPlay
-                className="w-full rounded-2xl"
-                style={{ maxHeight: '70vh' }}
-              />
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1`}
+                  className="absolute inset-0 w-full h-full rounded-2xl"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title="Market Analysis"
+                />
+              </div>
               <button
                 onClick={() => setOpen(false)}
                 className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 hover:bg-black flex items-center justify-center text-white transition-colors"
