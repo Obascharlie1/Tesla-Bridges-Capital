@@ -10,13 +10,17 @@ const OG_IMAGE = `${SITE_URL}/images/og-cover.jpg`
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "BIT-TESLA — Tesla Quantum Market | Trade Forex, Stocks & Crypto",
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
+  title: "BIT-TESLA — Quantum Market | Trade Forex, Stocks & Crypto",
   description:
     "Putting Our Clients First For Over A Decade. BIT-TESLA is a trusted trading platform for Forex, Stock Market & Crypto — generate returns on rising and falling markets worldwide.",
   openGraph: {
     type: "website",
     url: SITE_URL,
-    title: "BIT-TESLA — Tesla Quantum Market | Trade Forex, Stocks & Crypto",
+    title: "BIT-TESLA — Quantum Market | Trade Forex, Stocks & Crypto",
     description:
       "Putting Our Clients First For Over A Decade. BIT-TESLA is a trusted trading platform for Forex, Stock Market & Crypto — generate returns on rising and falling markets worldwide.",
     siteName: "BIT-TESLA",
@@ -26,14 +30,14 @@ export const metadata: Metadata = {
         secureUrl: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "BIT-TESLA - Tesla Quantum Market",
+        alt: "BIT-TESLA - Quantum Market",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BIT-TESLA — Tesla Quantum Market | Trade Forex, Stocks & Crypto",
+    title: "BIT-TESLA — Quantum Market | Trade Forex, Stocks & Crypto",
     description:
       "Putting Our Clients First For Over A Decade. BIT-TESLA is a trusted trading platform for Forex, Stock Market & Crypto — generate returns on rising and falling markets worldwide.",
     images: [OG_IMAGE],
