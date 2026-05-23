@@ -9,6 +9,7 @@ import { InvestmentPlans } from "@/components/sections/InvestmentPlans";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Security } from "@/components/sections/Security";
 import { BTCSection } from "@/components/sections/BTCSection";
+import { FeatureImages } from "@/components/sections/FeatureImages";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { LiveTradeFeed } from "@/components/ui/LiveTradeFeed";
 
@@ -21,6 +22,7 @@ export default function Home() {
         <TrustBar />
         <BTCSection />
         <Features />
+        <FeatureImages />
         <DashboardPreview />
         <HowItWorks />
         <InvestmentPlans />
