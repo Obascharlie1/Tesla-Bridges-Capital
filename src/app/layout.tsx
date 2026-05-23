@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { TawkChat } from "@/components/ui/TawkChat";
+import { SessionGuard } from "@/components/ui/SessionGuard";
 
 const SITE_URL = 'https://quantumvest-rosy.vercel.app'
 const OG_IMAGE = `${SITE_URL}/images/og-cover.jpg`
@@ -48,6 +49,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={GeistSans.variable}>
       <body className="antialiased">
         <ThemeProvider>{children}</ThemeProvider>
+        <SessionGuard />
         <TawkChat />
       </body>
     </html>

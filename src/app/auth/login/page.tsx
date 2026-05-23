@@ -8,12 +8,13 @@ import { Eye, EyeOff, ArrowRight, Loader2 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
 export default function LoginPage() {
-  const router   = useRouter()
-  const [email,    setEmail]    = useState('')
-  const [password, setPassword] = useState('')
-  const [showPw,   setShowPw]   = useState(false)
-  const [loading,  setLoading]  = useState(false)
-  const [error,    setError]    = useState('')
+  const router      = useRouter()
+  const [email,      setEmail]      = useState('')
+  const [password,   setPassword]   = useState('')
+  const [showPw,     setShowPw]     = useState(false)
+  const [loading,    setLoading]    = useState(false)
+  const [error,      setError]      = useState('')
+  const [rememberMe, setRememberMe] = useState(true)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -27,6 +28,13 @@ export default function LoginPage() {
       setError(authErr.message)
       setLoading(false)
       return
+    }
+
+    // Store remember-me preference so SessionGuard can enforce it
+    localStorage.setItem('bit-tesla-remember', rememberMe ? 'true' : 'false')
+    if (!rememberMe) {
+      // Mark this browser session as active; cleared automatically on tab/browser close
+      sessionStorage.setItem('bit-tesla-session', 'true')
     }
 
     router.push('/dashboard')
@@ -92,7 +100,16 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-between">
+          <label className="flex items-center gap-2 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={e => setRememberMe(e.target.checked)}
+              className="w-4 h-4 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card accent-red-primary flex-shrink-0"
+            />
+            <span className="text-xs text-slate-500 dark:text-slate-400">Remember me</span>
+          </label>
           <Link href="/auth/forgot-password" className="text-xs text-red-primary hover:text-red-dim transition-colors font-medium">
             Forgot password?
           </Link>
