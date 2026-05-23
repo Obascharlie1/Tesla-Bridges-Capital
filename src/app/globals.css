@@ -51,7 +51,7 @@ button {
 /* Card — grey bg / no stroke in light; dark bg / border in dark */
 .glass-card {
   background: #F3F4F6;
-  border: none;
+  border: 1px solid #E5E7EB;
   box-shadow: none;
   border-radius: 0.75rem;
 }
