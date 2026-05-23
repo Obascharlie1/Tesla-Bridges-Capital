@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/providers/ThemeProvider";
 import { TawkChat } from "@/components/ui/TawkChat";
 
 const SITE_URL = 'https://quantumvest-rosy.vercel.app'
-const OG_IMAGE = `${SITE_URL}/images/team-handshake.jpg`
+const OG_IMAGE = `${SITE_URL}/images/og-cover.jpg`
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
       {
         url: OG_IMAGE,
         secureUrl: OG_IMAGE,
-        width: 1600,
-        height: 900,
+        width: 1200,
+        height: 630,
         alt: "BIT-TESLA - Tesla Quantum Market",
         type: "image/jpeg",
       },
