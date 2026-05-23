@@ -10,10 +10,6 @@ const OG_IMAGE = `${SITE_URL}/images/og-cover.jpg`
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
-  },
   title: "BIT-TESLA — Quantum Market | Trade Forex, Stocks & Crypto",
   description:
     "Putting Our Clients First For Over A Decade. BIT-TESLA is a trusted trading platform for Forex, Stock Market & Crypto — generate returns on rising and falling markets worldwide.",
