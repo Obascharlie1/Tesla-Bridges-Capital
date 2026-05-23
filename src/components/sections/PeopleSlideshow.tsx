@@ -14,12 +14,12 @@ const row1 = [
 
 const row2 = [
   { id: '1580489944761-15a19d654956', name: 'Laura Bennett',  role: 'Wealth Manager'     },
-  { id: '1664575198063-9bdb6ec22861', name: 'Emma Clarke',    role: 'Quant Researcher'   },
+  { id: '1570295999919-56ceb5ecca61', name: 'Emma Clarke',    role: 'Quant Researcher'   },
   { id: '1556761175-5973dc0f32e7',   name: 'David Morgan',   role: 'Chief Economist'    },
-  { id: '1504383308090-c5029b909b15', name: 'Paul Hughes',    role: 'Market Strategist'  },
-  { id: '1621091104890-d6424ea04fb4', name: 'Anna Fischer',   role: 'ETF Specialist'     },
+  { id: '1531746020798-e6953c6e8e04', name: 'Paul Hughes',    role: 'Market Strategist'  },
+  { id: '1544005313-94ddf0286df2',   name: 'Anna Fischer',   role: 'ETF Specialist'     },
   { id: '1438761681033-6461ffad8d80', name: 'Lisa Turner',    role: 'Options Trader'     },
-  { id: '1463453051939-02c28b146890', name: 'Oliver Hayes',   role: 'Derivatives Desk'   },
+  { id: '1535713875002-d1d0cf377fde', name: 'Oliver Hayes',   role: 'Derivatives Desk'   },
 ]
 
 function PersonCard({ id, name, role }: { id: string; name: string; role: string }) {
