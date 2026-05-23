@@ -8,7 +8,7 @@ import {
   UserX, UserCheck, Trash2,
   CheckCircle, XCircle, Plus,
   ShieldCheck, ShieldAlert, ShieldOff,
-  FileText, Loader2,
+  FileText, Loader2, Bell, Send,
 } from 'lucide-react'
 
 /* ─── types ─────────────────────────────────────────────────────────────── */
@@ -86,8 +86,15 @@ export default function AdminUserDetailPage() {
   const [suspending,  setSuspending]  = useState(false)
   const [confirmDel,  setConfirmDel]  = useState(false)
   const [deleting,    setDeleting]    = useState(false)
-  const [txLoading,   setTxLoading]   = useState<string | null>(null) // txId being approved/rejected
+  const [txLoading,   setTxLoading]   = useState<string | null>(null)
   const [actionError, setActionError] = useState('')
+
+  /* notification state */
+  const [notifTitle,   setNotifTitle]   = useState('')
+  const [notifMessage, setNotifMessage] = useState('')
+  const [notifType,    setNotifType]    = useState<'info' | 'success' | 'warning' | 'error'>('info')
+  const [notifLoading, setNotifLoading] = useState(false)
+  const [notifSent,    setNotifSent]    = useState(false)
 
   /* ── load data ────────────────────────────────────────────────────────── */
 
@@ -207,6 +214,25 @@ export default function AdminUserDetailPage() {
       await load()
     }
     setAddLoading(false)
+  }
+
+  async function handleSendNotification(e: React.FormEvent) {
+    e.preventDefault()
+    if (!notifTitle.trim() || !notifMessage.trim()) return
+    setNotifLoading(true)
+    const res = await fetch('/api/admin/notifications', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, title: notifTitle, message: notifMessage, type: notifType }),
+    })
+    setNotifLoading(false)
+    if (res.ok) {
+      setNotifTitle('')
+      setNotifMessage('')
+      setNotifType('info')
+      setNotifSent(true)
+      setTimeout(() => setNotifSent(false), 3000)
+    }
   }
 
   /* ── render ────────────────────────────────────────────────────────────── */
@@ -659,6 +685,86 @@ export default function AdminUserDetailPage() {
             </div>
           </>
         )}
+      </section>
+
+      {/* ── Section 4: Send Notification ───────────────────────────────── */}
+      <section className="bg-light-base dark:bg-dark-card border border-light-border dark:border-dark-border rounded-xl">
+        <div className="px-5 py-4 border-b border-light-border dark:border-dark-border flex items-center gap-2">
+          <Bell size={15} className="text-red-primary" />
+          <h2 className="text-sm font-bold text-dark-base dark:text-white">Send Notification</h2>
+        </div>
+        <form onSubmit={handleSendNotification} className="p-5 space-y-4">
+
+          {/* Type selector */}
+          <div>
+            <label className="block text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Type</label>
+            <div className="flex gap-2 flex-wrap">
+              {([
+                { value: 'info',    label: 'Info',    color: 'text-blue-600 dark:text-blue-400 border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/20'    },
+                { value: 'success', label: 'Success', color: 'text-emerald-600 dark:text-emerald-400 border-emerald-300 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-900/20' },
+                { value: 'warning', label: 'Warning', color: 'text-amber-600 dark:text-amber-400 border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/20'    },
+                { value: 'error',   label: 'Alert',   color: 'text-red-primary border-red-200 dark:border-red-800 bg-red-primary/10' },
+              ] as const).map(opt => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => setNotifType(opt.value)}
+                  className={`px-3 py-1.5 text-xs font-semibold border transition-colors ${
+                    notifType === opt.value
+                      ? opt.color
+                      : 'border-light-border dark:border-dark-border text-slate-500 dark:text-slate-400 hover:border-slate-400'
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Title */}
+          <div>
+            <label className="block text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Title</label>
+            <input
+              type="text"
+              value={notifTitle}
+              onChange={e => setNotifTitle(e.target.value)}
+              placeholder="e.g. Your deposit has been approved"
+              required
+              className="w-full px-3 py-2.5 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card text-dark-base dark:text-white text-sm focus:outline-none focus:border-red-primary transition-colors placeholder:text-slate-400"
+            />
+          </div>
+
+          {/* Message */}
+          <div>
+            <label className="block text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Message</label>
+            <textarea
+              value={notifMessage}
+              onChange={e => setNotifMessage(e.target.value)}
+              placeholder="Write the notification message here…"
+              required
+              rows={3}
+              className="w-full px-3 py-2.5 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card text-dark-base dark:text-white text-sm focus:outline-none focus:border-red-primary transition-colors placeholder:text-slate-400 resize-none"
+            />
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              type="submit"
+              disabled={notifLoading || !notifTitle.trim() || !notifMessage.trim()}
+              className="flex items-center gap-1.5 px-4 py-2.5 bg-red-primary hover:bg-red-dim disabled:opacity-60 disabled:cursor-not-allowed text-white text-xs font-bold transition-colors"
+            >
+              {notifLoading
+                ? <><Loader2 size={13} className="animate-spin" /> Sending…</>
+                : <><Send size={13} /> Send Notification</>
+              }
+            </button>
+            {notifSent && (
+              <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                <CheckCircle size={13} /> Notification sent!
+              </span>
+            )}
+          </div>
+        </form>
       </section>
 
       {/* Delete confirmation modal */}
