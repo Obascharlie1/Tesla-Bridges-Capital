@@ -4,10 +4,36 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { TawkChat } from "@/components/ui/TawkChat";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://quantumvest.vercel.app'
+
 export const metadata: Metadata = {
-  title: "BIT-TESLA — AI-Powered Investment Platform",
+  metadataBase: new URL(siteUrl),
+  title: "BIT-TESLA - TESLA QUANTUM MARKET",
   description:
-    "Access institutional-grade trading tools, real-time analytics, and automated portfolio management. Trusted by 10M+ investors.",
+    "Putting Our Clients First For Over A Decade. For over a decade, we've been empowering clients by helping them take control of their financial lives. Bit-tesla is a successful online trading and investment platform for brokers interested in Foreign Exchange, Stock Market Trading, and Cryptocurrency Trading. We give our users the potential to generate financial returns on both rising and falling prices across indices, FX, commodities, shares and cryptocurrencies.",
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: "BIT-TESLA - TESLA QUANTUM MARKET",
+    description:
+      "Putting Our Clients First For Over A Decade. For over a decade, we've been empowering clients by helping them take control of their financial lives. Bit-tesla is a successful online trading and investment platform for brokers interested in Foreign Exchange, Stock Market Trading, and Cryptocurrency Trading.",
+    siteName: "BIT-TESLA",
+    images: [
+      {
+        url: "/images/team-handshake.jpg",
+        width: 1600,
+        height: 900,
+        alt: "BIT-TESLA - Tesla Quantum Market",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BIT-TESLA - TESLA QUANTUM MARKET",
+    description:
+      "Putting Our Clients First For Over A Decade. A trusted online trading and investment platform for Foreign Exchange, Stock Market Trading, and Cryptocurrency.",
+    images: ["/images/team-handshake.jpg"],
+  },
 };
 
 export default function RootLayout({
