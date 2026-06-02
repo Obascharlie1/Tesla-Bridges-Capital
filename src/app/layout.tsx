@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/providers/ThemeProvider";
 import { TawkChat } from "@/components/ui/TawkChat";
 import { SessionGuard } from "@/components/ui/SessionGuard";
 
-const SITE_URL = 'https://quantumvest-rosy.vercel.app'
+const SITE_URL = 'https://quantumtraderlink.com'
 const OG_IMAGE = `${SITE_URL}/images/og-cover.jpg`
 
 export const metadata: Metadata = {
