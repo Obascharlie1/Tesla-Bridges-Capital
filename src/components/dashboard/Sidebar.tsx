@@ -11,9 +11,10 @@ import {
   User,
   LogOut,
   X,
+  MessageCircle,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
 
 const navItems = [
@@ -22,6 +23,7 @@ const navItems = [
   { href: '/dashboard/withdraw',     label: 'Withdraw',     icon: ArrowUpFromLine },
   { href: '/dashboard/plans',        label: 'My Plans',     icon: TrendingUp },
   { href: '/dashboard/transactions', label: 'Transactions', icon: History },
+  { href: '/dashboard/messages',     label: 'Messages',     icon: MessageCircle },
   { href: '/dashboard/profile',      label: 'Profile',      icon: User },
 ]
 
@@ -33,8 +35,9 @@ interface SidebarProps {
 export function Sidebar({ mobileOpen, onClose }: SidebarProps) {
   const pathname = usePathname()
   const router   = useRouter()
-  const [userName,  setUserName]  = useState('')
-  const [userEmail, setUserEmail] = useState('')
+  const [userName,    setUserName]    = useState('')
+  const [userEmail,   setUserEmail]   = useState('')
+  const [unreadMsgs,  setUnreadMsgs]  = useState(0)
 
   // Close on route change
   useEffect(() => { onClose() }, [pathname])
@@ -57,6 +60,26 @@ export function Sidebar({ mobileOpen, onClose }: SidebarProps) {
     })
   }, [])
 
+  // Poll for unread messages
+  const fetchUnread = useCallback(async () => {
+    const supabase = createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return
+    const { count } = await supabase
+      .from('messages')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', user.id)
+      .eq('sender', 'admin')
+      .eq('read', false)
+    setUnreadMsgs(count ?? 0)
+  }, [])
+
+  useEffect(() => {
+    fetchUnread()
+    const id = setInterval(fetchUnread, 15_000)
+    return () => clearInterval(id)
+  }, [fetchUnread])
+
   async function handleSignOut() {
     const supabase = createClient()
     await supabase.auth.signOut()
@@ -74,6 +97,7 @@ export function Sidebar({ mobileOpen, onClose }: SidebarProps) {
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
         {navItems.map((item) => {
           const active = isActive(item.href, item.exact)
+          const isMessages = item.href === '/dashboard/messages'
           return (
             <Link
               key={item.href}
@@ -86,7 +110,12 @@ export function Sidebar({ mobileOpen, onClose }: SidebarProps) {
               )}
             >
               <item.icon size={17} strokeWidth={active ? 2.5 : 2} />
-              {item.label}
+              <span className="flex-1">{item.label}</span>
+              {isMessages && unreadMsgs > 0 && (
+                <span className="min-w-[18px] h-[18px] px-1 flex items-center justify-center rounded-full bg-red-primary text-white text-[10px] font-bold">
+                  {unreadMsgs}
+                </span>
+              )}
             </Link>
           )
         })}
