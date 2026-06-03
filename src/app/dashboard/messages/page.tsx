@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { Send, Loader2, MessageCircle } from 'lucide-react'
+import { Send, Loader2, MessageCircle, ShieldCheck } from 'lucide-react'
 
 interface Message {
   id: string
@@ -13,10 +13,26 @@ interface Message {
 }
 
 function formatTime(iso: string) {
-  return new Date(iso).toLocaleString('en-US', {
-    month: 'short', day: 'numeric',
-    hour: 'numeric', minute: '2-digit',
+  const d = new Date(iso)
+  const now = new Date()
+  const isToday = d.toDateString() === now.toDateString()
+  if (isToday) return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
+}
+
+function groupByDate(messages: Message[]) {
+  const groups: { date: string; messages: Message[] }[] = []
+  messages.forEach(msg => {
+    const d = new Date(msg.created_at)
+    const now = new Date()
+    const isToday = d.toDateString() === now.toDateString()
+    const isYesterday = new Date(now.setDate(now.getDate() - 1)).toDateString() === d.toDateString()
+    const label = isToday ? 'Today' : isYesterday ? 'Yesterday' : d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })
+    const last = groups[groups.length - 1]
+    if (!last || last.date !== label) groups.push({ date: label, messages: [msg] })
+    else last.messages.push(msg)
   })
+  return groups
 }
 
 export default function MessagesPage() {
@@ -62,62 +78,112 @@ export default function MessagesPage() {
     setSending(false)
   }
 
+  const groups = groupByDate(messages)
+
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen bg-light-surface dark:bg-dark-surface">
       <TopBar title="Messages" subtitle="Support &amp; Admin Chat" />
 
-      <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 max-w-2xl w-full mx-auto">
+      {/* Chat area */}
+      <div className="flex-1 overflow-y-auto px-4 py-6 max-w-2xl w-full mx-auto">
         {loading ? (
           <div className="flex items-center justify-center h-40">
             <Loader2 size={24} className="animate-spin text-red-primary" />
           </div>
         ) : messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-64 text-center">
-            <div className="w-14 h-14 rounded-full bg-light-surface dark:bg-dark-card border border-light-border dark:border-dark-border flex items-center justify-center mb-4">
-              <MessageCircle size={24} className="text-slate-400" />
+            <div className="w-16 h-16 rounded-full bg-white dark:bg-dark-card shadow-sm flex items-center justify-center mb-4">
+              <MessageCircle size={28} className="text-red-primary" />
             </div>
-            <p className="text-sm font-semibold text-dark-base dark:text-white mb-1">No messages yet</p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Send a message and our support team will reply shortly.</p>
+            <p className="text-sm font-bold text-dark-base dark:text-white mb-1">No messages yet</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs leading-relaxed">
+              Send us a message and our support team will get back to you shortly.
+            </p>
           </div>
         ) : (
-          messages.map(msg => (
-            <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 ${
-                msg.sender === 'user'
-                  ? 'bg-red-primary text-white rounded-br-sm'
-                  : 'bg-light-base dark:bg-dark-card border border-light-border dark:border-dark-border text-dark-base dark:text-white rounded-bl-sm'
-              }`}>
-                {msg.sender === 'admin' && (
-                  <p className="text-[10px] font-bold text-red-primary dark:text-red-primary mb-1 uppercase tracking-wider">Support</p>
-                )}
-                <p className="text-sm leading-relaxed">{msg.content}</p>
-                <p className={`text-[10px] mt-1.5 ${msg.sender === 'user' ? 'text-white/60' : 'text-slate-400'}`}>
-                  {formatTime(msg.created_at)}
-                </p>
+          <div className="space-y-6">
+            {groups.map(group => (
+              <div key={group.date}>
+                {/* Date divider */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex-1 h-px bg-light-border dark:bg-dark-border" />
+                  <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest px-2">
+                    {group.date}
+                  </span>
+                  <div className="flex-1 h-px bg-light-border dark:bg-dark-border" />
+                </div>
+
+                <div className="space-y-2">
+                  {group.messages.map((msg, i) => {
+                    const isUser  = msg.sender === 'user'
+                    const isAdmin = msg.sender === 'admin'
+                    const prev    = group.messages[i - 1]
+                    const showAvatar = isAdmin && (!prev || prev.sender !== 'admin')
+
+                    return (
+                      <div key={msg.id} className={`flex items-end gap-2.5 ${isUser ? 'justify-end' : 'justify-start'}`}>
+
+                        {/* Admin avatar */}
+                        {isAdmin && (
+                          <div className={`flex-shrink-0 mb-0.5 ${showAvatar ? 'visible' : 'invisible'}`}>
+                            <div className="w-8 h-8 rounded-full bg-red-primary flex items-center justify-center shadow-sm">
+                              <ShieldCheck size={14} className="text-white" />
+                            </div>
+                          </div>
+                        )}
+
+                        <div className={`flex flex-col ${isUser ? 'items-end' : 'items-start'} max-w-[72%]`}>
+                          {/* Sender label (first in group) */}
+                          {showAvatar && (
+                            <p className="text-[10px] font-bold text-red-primary uppercase tracking-wider mb-1 ml-1">
+                              Support
+                            </p>
+                          )}
+
+                          {/* Bubble */}
+                          <div className={`relative px-4 py-3 shadow-sm ${
+                            isUser
+                              ? 'bg-red-primary text-white rounded-3xl rounded-br-md'
+                              : 'bg-white dark:bg-dark-card text-dark-base dark:text-white rounded-3xl rounded-bl-md border border-light-border dark:border-dark-border'
+                          }`}>
+                            <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                          </div>
+
+                          {/* Timestamp */}
+                          <p className={`text-[10px] mt-1 mx-1 ${isUser ? 'text-slate-400' : 'text-slate-400'}`}>
+                            {formatTime(msg.created_at)}
+                          </p>
+                        </div>
+
+                        {/* User avatar spacer */}
+                        {isUser && <div className="w-2 flex-shrink-0" />}
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
-            </div>
-          ))
+            ))}
+          </div>
         )}
         <div ref={bottomRef} />
       </div>
 
       {/* Input bar */}
-      <div className="border-t border-light-border dark:border-dark-border bg-light-base dark:bg-dark-base p-4">
-        <form onSubmit={handleSend} className="max-w-2xl mx-auto flex gap-3">
+      <div className="bg-light-base dark:bg-dark-base border-t border-light-border dark:border-dark-border px-4 py-3">
+        <form onSubmit={handleSend} className="max-w-2xl mx-auto flex items-center gap-2">
           <input
             type="text"
             value={input}
             onChange={e => setInput(e.target.value)}
             placeholder="Type a message…"
-            className="flex-1 px-4 py-2.5 border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-card text-dark-base dark:text-white text-sm focus:outline-none focus:border-red-primary transition-colors rounded-xl placeholder:text-slate-400"
+            className="flex-1 px-4 py-3 rounded-full border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-card text-dark-base dark:text-white text-sm focus:outline-none focus:border-red-primary transition-colors placeholder:text-slate-400"
           />
           <button
             type="submit"
             disabled={!input.trim() || sending}
-            className="flex items-center gap-2 px-4 h-10 bg-red-primary hover:bg-red-dim disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-bold rounded-xl transition-colors flex-shrink-0"
+            className="w-11 h-11 flex items-center justify-center bg-red-primary hover:bg-red-dim disabled:opacity-40 disabled:cursor-not-allowed text-white rounded-full transition-colors flex-shrink-0 shadow-sm"
           >
-            {sending ? <Loader2 size={15} className="animate-spin" /> : <Send size={15} />}
-            <span>{sending ? 'Sending…' : 'Send'}</span>
+            {sending ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
           </button>
         </form>
       </div>
