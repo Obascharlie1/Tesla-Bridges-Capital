@@ -1,5 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
+
+async function notifyTelegram(userId: string, content: string) {
+  const token  = process.env.TELEGRAM_BOT_TOKEN
+  const chatId = process.env.TELEGRAM_ADMIN_CHAT_ID
+  if (!token || !chatId) return
+
+  const admin = createAdminClient()
+  const { data: profile } = await admin.from('profiles').select('full_name, email').eq('id', userId).single()
+  const name = profile?.full_name || profile?.email || 'Unknown User'
+
+  await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id:    chatId,
+      parse_mode: 'Markdown',
+      text: `💬 *New message from ${name}*\n🆔 ${userId}\n\n${content}\n\n_Reply to this message to respond to the user_`,
+    }),
+  })
+}
 
 // GET — user fetches their conversation
 export async function GET() {
@@ -37,6 +58,9 @@ export async function POST(req: NextRequest) {
     .single()
 
   if (error) return NextResponse.json({ error: error.message }, { status: 400 })
+
+  // Forward to Telegram (fire and forget)
+  notifyTelegram(user.id, content.trim()).catch(() => {})
 
   return NextResponse.json({ data })
 }
