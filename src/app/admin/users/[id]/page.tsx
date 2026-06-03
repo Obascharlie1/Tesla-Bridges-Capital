@@ -8,7 +8,7 @@ import {
   UserX, UserCheck, Trash2,
   CheckCircle, XCircle, Plus,
   ShieldCheck, ShieldAlert, ShieldOff,
-  FileText, Loader2, Bell, Send,
+  FileText, Loader2, Bell, Send, ZoomIn,
 } from 'lucide-react'
 
 /* ─── types ─────────────────────────────────────────────────────────────── */
@@ -88,6 +88,11 @@ export default function AdminUserDetailPage() {
   const [deleting,    setDeleting]    = useState(false)
   const [txLoading,   setTxLoading]   = useState<string | null>(null)
   const [actionError, setActionError] = useState('')
+
+  /* kyc docs state */
+  const [kycDocs,       setKycDocs]       = useState<{ front?: string; back?: string } | null>(null)
+  const [kycDocsLoading, setKycDocsLoading] = useState(false)
+  const [lightboxImg,   setLightboxImg]   = useState<string | null>(null)
 
   /* notification state */
   const [notifTitle,   setNotifTitle]   = useState('')
@@ -216,6 +221,16 @@ export default function AdminUserDetailPage() {
     setAddLoading(false)
   }
 
+  async function loadKycDocs() {
+    setKycDocsLoading(true)
+    const res = await fetch(`/api/admin/users/${userId}/kyc-docs`)
+    if (res.ok) {
+      const { data } = await res.json()
+      setKycDocs(data)
+    }
+    setKycDocsLoading(false)
+  }
+
   async function handleSendNotification(e: React.FormEvent) {
     e.preventDefault()
     if (!notifTitle.trim() || !notifMessage.trim()) return
@@ -319,11 +334,56 @@ export default function AdminUserDetailPage() {
               </span>
             </div>
           </div>
+          {/* View documents */}
+          <div className="mt-4">
+            {!kycDocs && !kycDocsLoading && (
+              <button
+                onClick={loadKycDocs}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold border border-light-border dark:border-dark-border text-slate-600 dark:text-slate-300 hover:border-red-primary hover:text-red-primary transition-colors"
+              >
+                <FileText size={13} /> View Documents
+              </button>
+            )}
+            {kycDocsLoading && (
+              <div className="flex items-center gap-2 text-xs text-slate-500">
+                <Loader2 size={13} className="animate-spin" /> Loading documents…
+              </div>
+            )}
+            {kycDocs && (
+              <div className="space-y-3 mt-1">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Submitted Documents</p>
+                <div className="flex gap-3 flex-wrap">
+                  {kycDocs.front && (
+                    <div className="relative group cursor-pointer" onClick={() => setLightboxImg(kycDocs.front!)}>
+                      <img src={kycDocs.front} alt="Front" className="w-40 h-28 object-cover border border-light-border dark:border-dark-border rounded-lg" />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <ZoomIn size={20} className="text-white" />
+                      </div>
+                      <p className="text-[10px] text-slate-500 mt-1 text-center">Front</p>
+                    </div>
+                  )}
+                  {kycDocs.back && (
+                    <div className="relative group cursor-pointer" onClick={() => setLightboxImg(kycDocs.back!)}>
+                      <img src={kycDocs.back} alt="Back" className="w-40 h-28 object-cover border border-light-border dark:border-dark-border rounded-lg" />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <ZoomIn size={20} className="text-white" />
+                      </div>
+                      <p className="text-[10px] text-slate-500 mt-1 text-center">Back</p>
+                    </div>
+                  )}
+                  {!kycDocs.front && !kycDocs.back && (
+                    <p className="text-xs text-slate-500 dark:text-slate-400">No documents found in storage.</p>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Change KYC status */}
           {!isVerified && (
             <button
               onClick={() => patchProfile({ kyc_status: 'Verified' })}
-              className="mt-3 flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold border border-emerald-300 dark:border-emerald-700/50 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors"
+              className="mt-4 flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold border border-emerald-300 dark:border-emerald-700/50 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors"
             >
               <ShieldCheck size={13} /> Mark as Verified
             </button>
@@ -766,6 +826,24 @@ export default function AdminUserDetailPage() {
           </div>
         </form>
       </section>
+
+      {/* Document lightbox */}
+      {lightboxImg && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+          onClick={() => setLightboxImg(null)}
+        >
+          <div className="relative max-w-3xl w-full" onClick={e => e.stopPropagation()}>
+            <img src={lightboxImg} alt="KYC Document" className="w-full rounded-xl max-h-[80vh] object-contain" />
+            <button
+              onClick={() => setLightboxImg(null)}
+              className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 hover:bg-black flex items-center justify-center text-white transition-colors"
+            >
+              <X size={16} />
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Delete confirmation modal */}
       {confirmDel && (

@@ -11,6 +11,7 @@ type DocType = 'passport' | 'drivers_license' | 'national_id'
 interface UploadedFile {
   name: string
   size: string
+  file: File
 }
 
 const docTypes: { value: DocType; label: string; desc: string }[] = [
@@ -35,7 +36,7 @@ function FileUploadArea({ label, file, onFile }: { label: string; file: Uploaded
   const inputRef = useRef<HTMLInputElement>(null)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0]
-    if (f) onFile({ name: f.name, size: formatSize(f.size) })
+    if (f) onFile({ name: f.name, size: formatSize(f.size), file: f })
   }
   return (
     <div>
@@ -102,12 +103,45 @@ export default function KYCPage() {
     setError('')
 
     const supabase = createClient()
+
+    // Upload front document
+    const frontExt  = frontFile!.file.name.split('.').pop()
+    const frontPath = `${userId}/front.${frontExt}`
+    const { error: frontErr } = await supabase.storage
+      .from('kyc-documents')
+      .upload(frontPath, frontFile!.file, { upsert: true })
+
+    if (frontErr) {
+      setError('Failed to upload front document. Please try again.')
+      setLoading(false)
+      return
+    }
+
+    // Upload back document (if required)
+    let backPath: string | null = null
+    if (needsBack && backFile) {
+      const backExt = backFile.file.name.split('.').pop()
+      backPath = `${userId}/back.${backExt}`
+      const { error: backErr } = await supabase.storage
+        .from('kyc-documents')
+        .upload(backPath, backFile.file, { upsert: true })
+
+      if (backErr) {
+        setError('Failed to upload back document. Please try again.')
+        setLoading(false)
+        return
+      }
+    }
+
+    // Update profile with file paths and status
     const { error: updateErr } = await supabase
       .from('profiles')
       .update({
         kyc_status:       'Pending',
         kyc_doc_type:     docTypeLabels[docType],
         kyc_submitted_at: new Date().toISOString(),
+        kyc_front_url:    frontPath,
+        kyc_back_url:     backPath,
       })
       .eq('id', userId)
 
