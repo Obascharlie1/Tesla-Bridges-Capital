@@ -486,7 +486,7 @@ export default function AdminUserDetailPage() {
           {/* Balance — editable */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <p className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Balance</p>
+              <p className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Balance (Profit)</p>
               {!editingBal && (
                 <button onClick={() => { setEditingBal(true); setBalInput(String(profile.balance)) }}
                   className="text-slate-400 hover:text-red-primary transition-colors" title="Edit balance">
@@ -514,7 +514,7 @@ export default function AdminUserDetailPage() {
               </div>
             ) : (
               <p className="text-3xl font-bold text-dark-base dark:text-white">
-                ${(profile.balance ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                ${(profile.profit ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
             )}
           </div>
