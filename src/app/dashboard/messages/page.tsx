@@ -114,9 +114,10 @@ export default function MessagesPage() {
           <button
             type="submit"
             disabled={!input.trim() || sending}
-            className="w-10 h-10 flex items-center justify-center bg-red-primary hover:bg-red-dim disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl transition-colors flex-shrink-0"
+            className="flex items-center gap-2 px-4 h-10 bg-red-primary hover:bg-red-dim disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-bold rounded-xl transition-colors flex-shrink-0"
           >
-            {sending ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+            {sending ? <Loader2 size={15} className="animate-spin" /> : <Send size={15} />}
+            <span>{sending ? 'Sending…' : 'Send'}</span>
           </button>
         </form>
       </div>
