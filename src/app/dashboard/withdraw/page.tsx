@@ -33,8 +33,8 @@ export default function WithdrawPage() {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) return
-      const { data } = await supabase.from('profiles').select('balance').eq('id', user.id).single()
-      setBalance(data?.balance ?? 0)
+      const { data } = await supabase.from('profiles').select('profit').eq('id', user.id).single()
+      setBalance(data?.profit ?? 0)
       setLoading(false)
     }
     load()
