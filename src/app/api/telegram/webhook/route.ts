@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     console.log('Reply to text:', replyTo.text)
 
     // Extract user ID embedded in the original forwarded message
-    const match = replyTo.text.match(/🆔\s*([a-f0-9-]{36})/i)
+    const match = replyTo.text.match(/\[UID:([a-f0-9-]{36})\]/i)
     if (!match) {
       console.log('No user ID found in:', replyTo.text)
       return NextResponse.json({ ok: true })
