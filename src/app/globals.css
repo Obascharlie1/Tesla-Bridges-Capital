@@ -3,9 +3,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-orange-primary: #FF9800;
-  --color-orange-secondary: #FFA726;
-  --color-orange-dim: #E65100;
+  --color-green-primary: #16A34A;
+  --color-green-secondary: #22C55E;
+  --color-green-dim: #15803D;
 
   --color-dark-base: #0A0A0A;
   --color-dark-surface: #111111;
@@ -40,13 +40,13 @@ button {
 }
 
 ::selection {
-  background: rgba(255, 152, 0, 0.2);
-  color: #FF9800;
+  background: rgba(22, 163, 74, 0.2);
+  color: #16A34A;
 }
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #FF9800; }
+::-webkit-scrollbar-thumb { background: #16A34A; }
 
 /* Card — grey bg / no stroke in light; dark bg / border in dark */
 .glass-card {
@@ -63,17 +63,17 @@ button {
   border-radius: 0.75rem;
 }
 
-/* Red gradient text */
+/* Green gradient text */
 .gradient-text {
-  background: linear-gradient(120deg, #DC2626 0%, #EF4444 100%);
+  background: linear-gradient(120deg, #16A34A 0%, #22C55E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Red glow — only for specific accent elements */
+/* Green glow — only for specific accent elements */
 .red-glow {
-  box-shadow: 0 0 0 1px #DC2626, 4px 4px 0 #DC2626;
+  box-shadow: 0 0 0 1px #16A34A, 4px 4px 0 #16A34A;
 }
 
 /* Ticker animation */

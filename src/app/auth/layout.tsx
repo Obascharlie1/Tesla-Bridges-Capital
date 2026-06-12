@@ -12,8 +12,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           style={{
             opacity: 0.05,
             backgroundImage: `
-              linear-gradient(#DC2626 1px, transparent 1px),
-              linear-gradient(90deg, #DC2626 1px, transparent 1px)
+              linear-gradient(#16A34A 1px, transparent 1px),
+              linear-gradient(90deg, #16A34A 1px, transparent 1px)
             `,
             backgroundSize: '40px 40px',
           }}
@@ -25,8 +25,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           <Link href="/" className="flex items-center mb-auto">
             <Image
               src="/images/logo.png"
-              alt="BIT-TESLA"
-              width={130}
+              alt="Tesla Bridges Capital"
+              width={216}
               height={22}
               className="h-7 w-auto brightness-0 invert"
             />

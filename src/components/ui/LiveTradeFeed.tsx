@@ -57,7 +57,7 @@ function fmt(ev: RawEvent): string {
 }
 
 const KIND_CONFIG: Record<EventKind, { accent: string; label: string }> = {
-  BUY:      { accent: 'text-red-400',   label: 'Buy' },
+  BUY:      { accent: 'text-green-primary',   label: 'Buy' },
   SELL:     { accent: 'text-slate-300', label: 'Sell' },
   DEPOSIT:  { accent: 'text-white',     label: 'Deposit' },
   WITHDRAW: { accent: 'text-slate-400', label: 'Withdraw' },

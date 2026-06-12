@@ -38,8 +38,8 @@ export function Navbar() {
             <Link href="/" className="flex items-center">
               <Image
                 src="/images/logo.png"
-                alt="BIT-TESLA"
-                width={130}
+                alt="Tesla Bridges Capital"
+                width={216}
                 height={22}
                 className="h-5 w-auto sm:h-7"
                 priority
@@ -70,7 +70,7 @@ export function Navbar() {
               </Link>
               <Link
                 href="/auth/register"
-                className="inline-flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm bg-orange-primary text-white hover:bg-orange-dim border border-orange-primary transition-all duration-150"
+                className="inline-flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm bg-green-primary text-white hover:bg-green-dim border border-green-primary transition-all duration-150"
               >
                 Get Started
               </Link>
@@ -123,14 +123,14 @@ export function Navbar() {
                 <Link
                   href="/auth/login"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm border border-light-border dark:border-dark-border text-dark-base dark:text-white hover:border-orange-primary hover:text-orange-primary transition-all duration-150"
+                  className="flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm border border-light-border dark:border-dark-border text-dark-base dark:text-white hover:border-green-primary hover:text-green-primary transition-all duration-150"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/auth/register"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm bg-orange-primary text-white hover:bg-orange-dim border border-orange-primary transition-all duration-150"
+                  className="flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm bg-green-primary text-white hover:bg-green-dim border border-green-primary transition-all duration-150"
                 >
                   Get Started Free
                 </Link>

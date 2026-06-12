@@ -22,7 +22,7 @@ export function HowItWorks() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-xs font-semibold tracking-widest text-orange-primary uppercase mb-4"
+            className="inline-block text-xs font-semibold tracking-widest text-green-primary uppercase mb-4"
           >
             Get Started
           </motion.span>
@@ -57,7 +57,7 @@ export function HowItWorks() {
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.3 }}
               style={{ transformOrigin: 'left' }}
-              className="h-full bg-gradient-to-r from-orange-primary/40 via-orange-primary to-orange-primary/40"
+              className="h-full bg-gradient-to-r from-green-primary/40 via-green-primary to-green-primary/40"
             />
           </div>
 
@@ -74,18 +74,18 @@ export function HowItWorks() {
               >
                 {/* Step number + icon */}
                 <div className="relative inline-flex flex-col items-center mb-6">
-                  <div className="w-18 h-18 border border-orange-primary/30 flex items-center justify-center relative">
-                    <div className="w-14 h-14 bg-orange-primary/10 dark:bg-orange-primary/15 flex items-center justify-center">
-                      <Icon size={24} className="text-orange-primary" />
+                  <div className="w-18 h-18 border border-green-primary/30 flex items-center justify-center relative">
+                    <div className="w-14 h-14 bg-green-primary/10 dark:bg-green-primary/15 flex items-center justify-center">
+                      <Icon size={24} className="text-green-primary" />
                     </div>
-                    <div className="absolute -top-2.5 -right-2.5 w-5 h-5 bg-orange-primary flex items-center justify-center">
+                    <div className="absolute -top-2.5 -right-2.5 w-5 h-5 bg-green-primary flex items-center justify-center">
                       <span className="text-[10px] font-bold text-white">{i + 1}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="max-w-xs mx-auto">
-                  <span className="text-[10px] font-bold text-orange-primary tracking-widest uppercase mb-2 block">
+                  <span className="text-[10px] font-bold text-green-primary tracking-widest uppercase mb-2 block">
                     Step {step.step}
                   </span>
                   <h3 className="text-xl font-bold text-dark-base dark:text-light-base mb-3">
