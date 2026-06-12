@@ -31,7 +31,7 @@ const COUNTRIES = [
 
 const GENDERS = ['Male', 'Female', 'Non-binary', 'Prefer not to say']
 
-const inputCls = 'w-full px-4 py-3 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card text-dark-base dark:text-white placeholder:text-slate-400 text-sm focus:outline-none focus:border-green-primary transition-colors'
+const inputCls = 'w-full px-4 py-3 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card text-dark-base dark:text-white placeholder:text-slate-400 text-sm focus:outline-none focus:border-brand-primary transition-colors'
 const labelCls = 'block text-xs font-semibold text-dark-base dark:text-white uppercase tracking-wider mb-2'
 
 type Step = 1 | 2
@@ -128,7 +128,7 @@ export default function RegisterPage() {
             step > s
               ? 'bg-emerald-500 text-white'
               : step === s
-              ? 'bg-green-primary text-white'
+              ? 'bg-brand-primary text-white'
               : 'bg-light-surface dark:bg-dark-card text-slate-400 border border-light-border dark:border-dark-border'
           }`}>
             {step > s ? <Check size={12} /> : s}
@@ -163,7 +163,7 @@ export default function RegisterPage() {
       <StepIndicator />
 
       {error && (
-        <div className="mb-5 px-4 py-3 bg-green-primary/10 border border-green-primary/30 text-green-primary text-sm">
+        <div className="mb-5 px-4 py-3 bg-brand-primary/10 border border-brand-primary/30 text-brand-primary text-sm">
           {error}
         </div>
       )}
@@ -175,14 +175,14 @@ export default function RegisterPage() {
             <label className={labelCls}>Full Name</label>
             <input type="text" value={form.fullName} onChange={e => update('fullName', e.target.value)}
               placeholder="John Doe" autoComplete="name" className={inputCls} />
-            {errors.fullName && <p className="mt-1 text-xs text-green-primary">{errors.fullName}</p>}
+            {errors.fullName && <p className="mt-1 text-xs text-brand-primary">{errors.fullName}</p>}
           </div>
 
           <div>
             <label className={labelCls}>Email Address</label>
             <input type="email" value={form.email} onChange={e => update('email', e.target.value)}
               placeholder="john@example.com" autoComplete="email" className={inputCls} />
-            {errors.email && <p className="mt-1 text-xs text-green-primary">{errors.email}</p>}
+            {errors.email && <p className="mt-1 text-xs text-brand-primary">{errors.email}</p>}
           </div>
 
           <div>
@@ -197,7 +197,7 @@ export default function RegisterPage() {
                 {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
-            {errors.password && <p className="mt-1 text-xs text-green-primary">{errors.password}</p>}
+            {errors.password && <p className="mt-1 text-xs text-brand-primary">{errors.password}</p>}
           </div>
 
           <div>
@@ -212,11 +212,11 @@ export default function RegisterPage() {
                 {showConfirm ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
-            {errors.confirmPassword && <p className="mt-1 text-xs text-green-primary">{errors.confirmPassword}</p>}
+            {errors.confirmPassword && <p className="mt-1 text-xs text-brand-primary">{errors.confirmPassword}</p>}
           </div>
 
           <button type="submit"
-            className="w-full bg-green-primary hover:bg-green-dim text-white font-bold py-3.5 text-sm transition-colors flex items-center justify-center gap-2">
+            className="w-full bg-brand-primary hover:bg-brand-dim text-white font-bold py-3.5 text-sm transition-colors flex items-center justify-center gap-2">
             Continue <ArrowRight size={16} />
           </button>
         </form>
@@ -232,7 +232,7 @@ export default function RegisterPage() {
               <option value="">Select gender</option>
               {GENDERS.map(g => <option key={g} value={g}>{g}</option>)}
             </select>
-            {errors.gender && <p className="mt-1 text-xs text-green-primary">{errors.gender}</p>}
+            {errors.gender && <p className="mt-1 text-xs text-brand-primary">{errors.gender}</p>}
           </div>
 
           {/* Date of Birth */}
@@ -241,7 +241,7 @@ export default function RegisterPage() {
             <input type="date" value={form.dateOfBirth} onChange={e => update('dateOfBirth', e.target.value)}
               max={new Date().toISOString().split('T')[0]}
               className={inputCls} />
-            {errors.dateOfBirth && <p className="mt-1 text-xs text-green-primary">{errors.dateOfBirth}</p>}
+            {errors.dateOfBirth && <p className="mt-1 text-xs text-brand-primary">{errors.dateOfBirth}</p>}
           </div>
 
           {/* Phone */}
@@ -249,7 +249,7 @@ export default function RegisterPage() {
             <label className={labelCls}>Phone Number</label>
             <input type="tel" value={form.phone} onChange={e => update('phone', e.target.value)}
               placeholder="+1 (555) 000-0000" autoComplete="tel" className={inputCls} />
-            {errors.phone && <p className="mt-1 text-xs text-green-primary">{errors.phone}</p>}
+            {errors.phone && <p className="mt-1 text-xs text-brand-primary">{errors.phone}</p>}
           </div>
 
           {/* Country */}
@@ -259,7 +259,7 @@ export default function RegisterPage() {
               <option value="">Select country</option>
               {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
-            {errors.country && <p className="mt-1 text-xs text-green-primary">{errors.country}</p>}
+            {errors.country && <p className="mt-1 text-xs text-brand-primary">{errors.country}</p>}
           </div>
 
           {/* State */}
@@ -281,21 +281,21 @@ export default function RegisterPage() {
             <label className="flex items-start gap-2 cursor-pointer">
               <input type="checkbox" checked={terms}
                 onChange={e => { setTerms(e.target.checked); setErrors(p => ({ ...p, terms: '' })) }}
-                className="mt-0.5 w-4 h-4 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card accent-green-primary flex-shrink-0" />
+                className="mt-0.5 w-4 h-4 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card accent-brand-primary flex-shrink-0" />
               <span className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                I agree to the <Link href="#" className="text-green-primary hover:text-green-dim font-medium">Terms of Service</Link> and <Link href="#" className="text-green-primary hover:text-green-dim font-medium">Privacy Policy</Link>
+                I agree to the <Link href="#" className="text-brand-primary hover:text-brand-dim font-medium">Terms of Service</Link> and <Link href="#" className="text-brand-primary hover:text-brand-dim font-medium">Privacy Policy</Link>
               </span>
             </label>
-            {errors.terms && <p className="mt-1 text-xs text-green-primary">{errors.terms}</p>}
+            {errors.terms && <p className="mt-1 text-xs text-brand-primary">{errors.terms}</p>}
           </div>
 
           <div className="flex gap-3">
             <button type="button" onClick={() => setStep(1)}
-              className="flex items-center justify-center gap-2 px-5 py-3.5 border border-light-border dark:border-dark-border text-sm font-semibold text-dark-base dark:text-white hover:border-green-primary hover:text-green-primary transition-colors">
+              className="flex items-center justify-center gap-2 px-5 py-3.5 border border-light-border dark:border-dark-border text-sm font-semibold text-dark-base dark:text-white hover:border-brand-primary hover:text-brand-primary transition-colors">
               <ArrowLeft size={15} />
             </button>
             <button type="submit" disabled={loading}
-              className="flex-1 bg-green-primary hover:bg-green-dim disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3.5 text-sm transition-colors flex items-center justify-center gap-2">
+              className="flex-1 bg-brand-primary hover:bg-brand-dim disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3.5 text-sm transition-colors flex items-center justify-center gap-2">
               {loading ? <><Loader2 size={16} className="animate-spin" /> Creating account…</> : <>Create Account <ArrowRight size={16} /></>}
             </button>
           </div>
@@ -304,7 +304,7 @@ export default function RegisterPage() {
 
       <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
         Already have an account?{' '}
-        <Link href="/auth/login" className="text-green-primary hover:text-green-dim font-medium transition-colors">Sign in</Link>
+        <Link href="/auth/login" className="text-brand-primary hover:text-brand-dim font-medium transition-colors">Sign in</Link>
       </p>
     </div>
   )

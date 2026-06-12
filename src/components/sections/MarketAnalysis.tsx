@@ -11,7 +11,7 @@ export function MarketAnalysis() {
   const [open, setOpen] = useState(false)
 
   return (
-    <section className="bg-light-surface dark:bg-dark-surface py-20 sm:py-28">
+    <section className="bg-light-surface/60 dark:bg-dark-surface/40 py-20 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
@@ -36,14 +36,14 @@ export function MarketAnalysis() {
             <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/50 group-hover:from-black/40 group-hover:to-black/40 transition-colors duration-300" />
 
             {/* Red accent border glow */}
-            <div className="absolute inset-0 rounded-2xl ring-1 ring-green-primary/20 group-hover:ring-green-primary/50 transition-all duration-300" />
+            <div className="absolute inset-0 rounded-2xl ring-1 ring-brand-primary/20 group-hover:ring-brand-primary/50 transition-all duration-300" />
 
             {/* Play button */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative">
-                <span className="absolute inset-0 rounded-full bg-green-primary/30 animate-ping" />
+                <span className="absolute inset-0 rounded-full bg-brand-primary/30 animate-ping" />
                 <div className="relative w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-200">
-                  <Play size={26} fill="#16A34A" className="text-green-primary ml-1" />
+                  <Play size={26} fill="#F4511E" className="text-brand-primary ml-1" />
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@ export function MarketAnalysis() {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
           >
             {/* Eyebrow */}
-            <p className="text-xs font-semibold uppercase tracking-widest text-green-primary mb-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary mb-4">
               Expert Network
             </p>
 
@@ -85,8 +85,8 @@ export function MarketAnalysis() {
                 'Direct access to professional trade setups',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                  <span className="mt-1 w-4 h-4 flex-shrink-0 rounded-full bg-green-primary/15 flex items-center justify-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-primary" />
+                  <span className="mt-1 w-4 h-4 flex-shrink-0 rounded-full bg-brand-primary/15 flex items-center justify-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
                   </span>
                   {item}
                 </li>
@@ -95,7 +95,7 @@ export function MarketAnalysis() {
 
             <a
               href="/auth/register"
-              className="inline-flex items-center gap-2 text-sm font-bold text-green-primary hover:text-green-dim transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:text-brand-dim transition-colors"
             >
               Get started today <ArrowRight size={15} />
             </a>

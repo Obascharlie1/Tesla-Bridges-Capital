@@ -34,7 +34,7 @@ export default function ForgotPasswordPage() {
     <div className="w-full max-w-sm">
       {/* Mobile logo */}
       <div className="lg:hidden flex items-center gap-2 mb-8">
-        <div className="w-8 h-8 bg-green-primary flex items-center justify-center">
+        <div className="w-8 h-8 bg-brand-primary flex items-center justify-center">
           <span className="text-white font-bold text-sm">Q</span>
         </div>
         <span className="font-bold text-dark-base dark:text-white text-base tracking-tight">Tesla Bridges Capital</span>
@@ -56,7 +56,7 @@ export default function ForgotPasswordPage() {
             Didn&apos;t receive the email? Check your spam folder or{' '}
             <button
               onClick={() => { setSubmitted(false); setEmail('') }}
-              className="text-green-primary hover:text-green-dim font-medium transition-colors"
+              className="text-brand-primary hover:text-brand-dim font-medium transition-colors"
             >
               try again
             </button>.
@@ -80,7 +80,7 @@ export default function ForgotPasswordPage() {
           </div>
 
           {error && (
-            <div className="mb-5 px-4 py-3 bg-green-primary/10 border border-green-primary/30 text-green-primary text-sm">
+            <div className="mb-5 px-4 py-3 bg-brand-primary/10 border border-brand-primary/30 text-brand-primary text-sm">
               {error}
             </div>
           )}
@@ -96,14 +96,14 @@ export default function ForgotPasswordPage() {
                 onChange={(e) => { setEmail(e.target.value); setError('') }}
                 placeholder="john@example.com"
                 autoComplete="email"
-                className="w-full px-4 py-3 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card text-dark-base dark:text-white placeholder:text-slate-400 text-sm focus:outline-none focus:border-green-primary transition-colors"
+                className="w-full px-4 py-3 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card text-dark-base dark:text-white placeholder:text-slate-400 text-sm focus:outline-none focus:border-brand-primary transition-colors"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-green-primary hover:bg-green-dim disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3.5 text-sm transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-brand-primary hover:bg-brand-dim disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3.5 text-sm transition-colors flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>

@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react'
 
 export function UpToTheMinute() {
   return (
-    <section className="bg-light-surface dark:bg-dark-surface py-20 sm:py-28 overflow-hidden">
+    <section className="bg-light-surface/60 dark:bg-dark-surface/40 py-20 sm:py-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
@@ -18,7 +18,7 @@ export function UpToTheMinute() {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             {/* Eyebrow */}
-            <p className="text-xs font-semibold uppercase tracking-widest text-green-primary mb-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary mb-4">
               Live Intelligence
             </p>
 
@@ -39,8 +39,8 @@ export function UpToTheMinute() {
                 'Personalised alerts for your portfolio',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                  <span className="mt-1 w-4 h-4 flex-shrink-0 rounded-full bg-green-primary/15 flex items-center justify-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-primary" />
+                  <span className="mt-1 w-4 h-4 flex-shrink-0 rounded-full bg-brand-primary/15 flex items-center justify-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
                   </span>
                   {item}
                 </li>
@@ -49,7 +49,7 @@ export function UpToTheMinute() {
 
             <a
               href="/auth/register"
-              className="inline-flex items-center gap-2 text-sm font-bold text-green-primary hover:text-green-dim transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:text-brand-dim transition-colors"
             >
               Open your account <ArrowRight size={15} />
             </a>
@@ -65,7 +65,7 @@ export function UpToTheMinute() {
           >
             <div className="relative max-w-sm w-full">
               {/* Subtle glow behind phones */}
-              <div className="absolute inset-0 -z-10 blur-3xl opacity-20 bg-green-primary rounded-full scale-75" />
+              <div className="absolute inset-0 -z-10 blur-3xl opacity-20 bg-brand-primary rounded-full scale-75" />
 
               <Image
                 src="/images/phones-mockup.png"

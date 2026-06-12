@@ -52,13 +52,13 @@ export function Hero() {
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.05]"
         style={{
-          backgroundImage: `linear-gradient(#16A34A 1px, transparent 1px), linear-gradient(90deg, #16A34A 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(#F4511E 1px, transparent 1px), linear-gradient(90deg, #F4511E 1px, transparent 1px)`,
           backgroundSize: '80px 80px',
         }}
       />
 
       {/* Red vertical accent bar */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 bg-green-primary hidden lg:block" />
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-brand-primary hidden lg:block" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -72,8 +72,8 @@ export function Hero() {
               transition={{ duration: 0.4 }}
               className="flex items-center gap-3 mb-8"
             >
-              <div className="w-6 h-px bg-green-primary" />
-              <span className="text-xs font-bold tracking-widest text-green-primary uppercase">
+              <div className="w-6 h-px bg-brand-primary" />
+              <span className="text-xs font-bold tracking-widest text-brand-primary uppercase">
                 AI Trading Platform
               </span>
             </motion.div>
@@ -109,7 +109,7 @@ export function Hero() {
             >
               <Link
                 href="/auth/register"
-                className="inline-flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-7 py-3.5 text-base bg-green-primary text-white hover:bg-green-dim border border-green-primary transition-all duration-150"
+                className="inline-flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-7 py-3.5 text-base bg-brand-primary text-white hover:bg-brand-dim border border-brand-primary transition-all duration-150"
               >
                 Start Trading
                 <ArrowRight size={16} />
@@ -154,7 +154,7 @@ export function Hero() {
               {/* Top bar */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-dark-border">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-primary" />
+                  <div className="w-2 h-2 bg-brand-primary" />
                   <span className="text-xs font-bold text-white uppercase tracking-widest">Portfolio</span>
                 </div>
                 <span className="text-xs text-slate-400 font-mono">LIVE</span>
@@ -164,7 +164,7 @@ export function Hero() {
               <div className="px-4 py-4 border-b border-dark-border">
                 <p className="text-xs text-slate-400 uppercase tracking-wider mb-1">Total Value</p>
                 <p className="text-3xl font-black text-white font-mono tracking-tight">$847,392.00</p>
-                <span className="text-sm font-bold text-green-primary flex items-center gap-1 mt-1">
+                <span className="text-sm font-bold text-brand-primary flex items-center gap-1 mt-1">
                   <TrendingUp size={14} />
                   +$47,218 · +24.7% MTD
                 </span>
@@ -175,16 +175,16 @@ export function Hero() {
                 <svg viewBox="0 0 500 140" preserveAspectRatio="none" className="w-full h-full">
                   <defs>
                     <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#16A34A" stopOpacity="0.15" />
-                      <stop offset="100%" stopColor="#16A34A" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#F4511E" stopOpacity="0.15" />
+                      <stop offset="100%" stopColor="#F4511E" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   {[0.25, 0.5, 0.75].map((y) => (
                     <line key={y} x1="0" y1={y * 140} x2="500" y2={y * 140} stroke="currentColor" strokeOpacity="0.06" strokeWidth="1" />
                   ))}
                   <path d={chartPath.area} fill="url(#chartFill)" />
-                  <path d={chartPath.line} fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" />
-                  <circle cx="500" cy="19" r="3" fill="#16A34A" />
+                  <path d={chartPath.line} fill="none" stroke="#F4511E" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" />
+                  <circle cx="500" cy="19" r="3" fill="#F4511E" />
                 </svg>
               </div>
 
@@ -200,7 +200,7 @@ export function Hero() {
                       <p className="text-xs font-bold text-white">{asset.symbol}</p>
                       <p className="text-[10px] text-slate-400 font-mono">{asset.allocation}%</p>
                     </div>
-                    <span className={`text-xs font-bold flex items-center gap-0.5 ${asset.changePercent >= 0 ? 'text-green-primary' : 'text-red-400'}`}>
+                    <span className={`text-xs font-bold flex items-center gap-0.5 ${asset.changePercent >= 0 ? 'text-brand-primary' : 'text-red-400'}`}>
                       {asset.changePercent >= 0 ? <TrendingUp size={10} /> : <TrendingDown size={10} />}
                       {asset.changePercent >= 0 ? '+' : ''}{asset.changePercent}%
                     </span>
@@ -216,7 +216,7 @@ export function Hero() {
                   <div key={m.label} className="flex items-center gap-2 px-4 py-2 border-r border-dark-border whitespace-nowrap flex-shrink-0">
                     <span className="text-[10px] font-bold text-slate-400 uppercase">{m.label}</span>
                     <span className="text-[10px] font-mono font-bold text-white">{m.value}</span>
-                    <span className={`text-[10px] font-bold ${m.up ? 'text-green-primary' : 'text-slate-400'}`}>{m.change}</span>
+                    <span className={`text-[10px] font-bold ${m.up ? 'text-brand-primary' : 'text-slate-400'}`}>{m.change}</span>
                   </div>
                 ))}
               </div>

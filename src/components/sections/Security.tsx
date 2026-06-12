@@ -25,7 +25,7 @@ const badges = [
 
 export function Security() {
   return (
-    <section id="security" className="bg-light-surface dark:bg-dark-surface py-24 lg:py-32">
+    <section id="security" className="bg-light-surface/60 dark:bg-dark-surface/40 py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -33,7 +33,7 @@ export function Security() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-xs font-semibold tracking-widest text-green-primary uppercase mb-4"
+            className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-4"
           >
             Security & Trust
           </motion.span>
@@ -64,8 +64,8 @@ export function Security() {
             const Icon = iconMap[feature.icon]
             return (
               <GlassCard key={feature.title} delay={i * 0.07} className="p-5 flex items-start gap-4">
-                <div className="w-10 h-10 rounded bg-green-primary/10 dark:bg-green-primary/15 flex items-center justify-center flex-shrink-0">
-                  <Icon size={18} className="text-green-primary" />
+                <div className="w-10 h-10 rounded bg-brand-primary/10 dark:bg-brand-primary/15 flex items-center justify-center flex-shrink-0">
+                  <Icon size={18} className="text-brand-primary" />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-dark-base dark:text-light-base mb-1">{feature.title}</h3>

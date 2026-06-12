@@ -16,7 +16,7 @@ export function MobileApp() {
       {/* Gradient background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-dark-surface via-dark-base to-dark-base" />
-        <div className="absolute top-1/2 left-1/4 w-[600px] h-[400px] -translate-x-1/2 -translate-y-1/2 bg-green-primary/4 blur-3xl" />
+        <div className="absolute top-1/2 left-1/4 w-[600px] h-[400px] -translate-x-1/2 -translate-y-1/2 bg-brand-primary/4 blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,7 +27,7 @@ export function MobileApp() {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block text-xs font-semibold tracking-widest text-green-primary uppercase mb-4"
+              className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-4"
             >
               Mobile App
             </motion.span>
@@ -66,8 +66,8 @@ export function MobileApp() {
                     transition={{ delay: 0.15 + i * 0.08 }}
                     className="flex items-center gap-3"
                   >
-                    <div className="w-8 h-8 rounded-md bg-green-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Icon size={16} className="text-green-primary" />
+                    <div className="w-8 h-8 rounded-md bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Icon size={16} className="text-brand-primary" />
                     </div>
                     <span className="text-sm text-light-base/80">{feature.label}</span>
                   </motion.li>
@@ -89,13 +89,13 @@ export function MobileApp() {
               ].map((badge) => (
                 <button
                   key={badge.store}
-                  className="flex items-center gap-3 px-4 py-3 rounded border border-white/10 bg-white/5 hover:bg-white/10 hover:border-green-primary/40 transition-all duration-200 cursor-pointer backdrop-blur-sm"
+                  className="flex items-center gap-3 px-4 py-3 rounded border border-white/10 bg-white/5 hover:bg-white/10 hover:border-brand-primary/40 transition-all duration-200 cursor-pointer backdrop-blur-sm"
                 >
                   <div className="text-left">
                     <p className="text-[10px] text-light-base/50">{badge.sub}</p>
                     <p className="text-sm font-bold text-light-base">{badge.store}</p>
                   </div>
-                  <span className="text-xs font-semibold text-green-primary">{badge.rating}</span>
+                  <span className="text-xs font-semibold text-brand-primary">{badge.rating}</span>
                 </button>
               ))}
             </motion.div>
@@ -136,13 +136,13 @@ export function MobileApp() {
                         <p className="text-[10px] text-slate-400">Good morning, James</p>
                         <p className="text-sm font-bold text-light-base">Portfolio Overview</p>
                       </div>
-                      <div className="w-7 h-7 bg-green-primary/20 flex items-center justify-center">
-                        <Bell size={12} className="text-green-primary" />
+                      <div className="w-7 h-7 bg-brand-primary/20 flex items-center justify-center">
+                        <Bell size={12} className="text-brand-primary" />
                       </div>
                     </div>
 
                     {/* Balance card */}
-                    <div className="rounded bg-gradient-to-br from-green-primary to-green-secondary p-4">
+                    <div className="rounded bg-gradient-to-br from-brand-primary to-brand-secondary p-4">
                       <p className="text-[10px] text-dark-base/70 font-medium">Total Balance</p>
                       <p className="text-2xl font-black text-dark-base">$847,392</p>
                       <div className="flex items-center gap-1 mt-1">
@@ -156,12 +156,12 @@ export function MobileApp() {
                       <svg viewBox="0 0 220 60" className="w-full h-10">
                                         <defs>
                           <linearGradient id="mobileGrad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="#16A34A" stopOpacity="0.25" />
-                            <stop offset="100%" stopColor="#16A34A" stopOpacity="0" />
+                            <stop offset="0%" stopColor="#F4511E" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#F4511E" stopOpacity="0" />
                           </linearGradient>
                         </defs>
                         <path d="M0,50 C20,45 35,40 55,35 C75,30 85,38 105,30 C125,22 135,18 155,12 C170,8 185,10 220,4 L220,60 L0,60 Z" fill="url(#mobileGrad)" />
-                        <path d="M0,50 C20,45 35,40 55,35 C75,30 85,38 105,30 C125,22 135,18 155,12 C170,8 185,10 220,4" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="square" />
+                        <path d="M0,50 C20,45 35,40 55,35 C75,30 85,38 105,30 C125,22 135,18 155,12 C170,8 185,10 220,4" fill="none" stroke="#F4511E" strokeWidth="2" strokeLinecap="square" />
                       </svg>
                     </div>
 
@@ -173,14 +173,14 @@ export function MobileApp() {
                     ].map((asset) => (
                       <div key={asset.sym} className="flex items-center justify-between py-1.5 border-b border-dark-border">
                         <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 bg-green-primary/15 flex items-center justify-center">
-                            <span className="text-[8px] font-bold text-green-primary">{asset.sym.slice(0, 2)}</span>
+                          <div className="w-6 h-6 bg-brand-primary/15 flex items-center justify-center">
+                            <span className="text-[8px] font-bold text-brand-primary">{asset.sym.slice(0, 2)}</span>
                           </div>
                           <span className="text-[11px] font-bold text-light-base">{asset.sym}</span>
                         </div>
                         <div className="text-right">
                           <p className="text-[11px] font-bold text-light-base">{asset.val}</p>
-                          <p className="text-[9px] text-green-primary font-semibold">{asset.pct}</p>
+                          <p className="text-[9px] text-brand-primary font-semibold">{asset.pct}</p>
                         </div>
                       </div>
                     ))}
@@ -188,8 +188,8 @@ export function MobileApp() {
                     {/* Bottom nav */}
                     <div className="flex justify-around pt-2">
                       {['Home', 'Markets', 'Trade', 'Portfolio'].map((item, idx) => (
-                        <button key={item} className={`flex flex-col items-center gap-0.5 cursor-pointer ${idx === 0 ? 'text-green-primary' : 'text-slate-400'}`}>
-                          <div className={`w-4 h-0.5 ${idx === 0 ? 'bg-green-primary' : 'bg-transparent'}`} />
+                        <button key={item} className={`flex flex-col items-center gap-0.5 cursor-pointer ${idx === 0 ? 'text-brand-primary' : 'text-slate-400'}`}>
+                          <div className={`w-4 h-0.5 ${idx === 0 ? 'bg-brand-primary' : 'bg-transparent'}`} />
                           <span className="text-[8px] font-medium">{item}</span>
                         </button>
                       ))}
@@ -198,7 +198,7 @@ export function MobileApp() {
                 </div>
 
                 {/* Glow */}
-                <div className="absolute inset-0 rounded-3xl bg-green-primary/10 blur-xl -z-10 scale-110" />
+                <div className="absolute inset-0 rounded-3xl bg-brand-primary/10 blur-xl -z-10 scale-110" />
               </div>
 
               {/* Floating notification */}
@@ -208,8 +208,8 @@ export function MobileApp() {
                 className="absolute -right-8 top-16 bg-dark-card border border-dark-border rounded p-3 shadow-xl min-w-[140px]"
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <CheckCircle size={12} className="text-green-primary" />
-                  <span className="text-[9px] font-bold text-green-primary uppercase">Trade Executed</span>
+                  <CheckCircle size={12} className="text-brand-primary" />
+                  <span className="text-[9px] font-bold text-brand-primary uppercase">Trade Executed</span>
                 </div>
                 <p className="text-[11px] font-bold text-light-base">Bought NVDA × 10</p>
                 <p className="text-[9px] text-slate-400">$8,921.70 · 0.04s</p>

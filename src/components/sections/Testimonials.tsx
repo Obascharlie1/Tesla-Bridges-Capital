@@ -57,7 +57,7 @@ export function Testimonials() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
 
   return (
-    <section className="bg-light-base dark:bg-dark-base py-20 sm:py-28">
+    <section className="bg-light-base/70 dark:bg-dark-base/40 py-20 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}
@@ -132,7 +132,7 @@ export function Testimonials() {
                   {/* Pulse rings */}
                   <span className="absolute inset-0 rounded-full bg-white/20 animate-ping" />
                   <div className="relative w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
-                    <Play size={22} fill="#16A34A" className="text-green-primary ml-1" />
+                    <Play size={22} fill="#F4511E" className="text-brand-primary ml-1" />
                   </div>
                 </div>
               </div>

@@ -16,7 +16,7 @@ const iconMap: Record<string, React.FC<{ size?: number; className?: string }>> =
 
 export function Features() {
   return (
-    <section id="features" className="bg-light-base dark:bg-dark-base py-24 lg:py-32">
+    <section id="features" className="bg-light-base/70 dark:bg-dark-base/40 py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -25,7 +25,7 @@ export function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="inline-block text-xs font-semibold tracking-widest text-green-primary uppercase mb-4"
+            className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-4"
           >
             Platform Features
           </motion.span>
@@ -61,12 +61,12 @@ export function Features() {
                 className="p-6 group cursor-default"
               >
                 {/* Icon */}
-                <div className="w-11 h-11 bg-green-primary/10 dark:bg-green-primary/15 flex items-center justify-center mb-4 group-hover:bg-green-primary/20 transition-colors duration-300">
-                  <Icon size={20} className="text-green-primary" />
+                <div className="w-11 h-11 bg-brand-primary/10 dark:bg-brand-primary/15 flex items-center justify-center mb-4 group-hover:bg-brand-primary/20 transition-colors duration-300">
+                  <Icon size={20} className="text-brand-primary" />
                 </div>
 
                 {/* Tag */}
-                <span className="inline-block text-[10px] font-bold tracking-widest text-green-primary uppercase mb-3 bg-green-primary/10 px-2 py-0.5">
+                <span className="inline-block text-[10px] font-bold tracking-widest text-brand-primary uppercase mb-3 bg-brand-primary/10 px-2 py-0.5">
                   {feature.tag}
                 </span>
 
@@ -78,7 +78,7 @@ export function Features() {
                 </p>
 
                 {/* Bottom accent line */}
-                <div className="mt-5 h-px bg-gradient-to-r from-green-primary/0 via-green-primary/40 to-green-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="mt-5 h-px bg-gradient-to-r from-brand-primary/0 via-brand-primary/40 to-brand-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </GlassCard>
             )
           })}

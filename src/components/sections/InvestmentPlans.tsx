@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 export function InvestmentPlans() {
   return (
-    <section id="pricing" className="bg-light-surface dark:bg-dark-surface py-24 lg:py-32">
+    <section id="pricing" className="bg-light-surface/60 dark:bg-dark-surface/40 py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -16,7 +16,7 @@ export function InvestmentPlans() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-xs font-semibold tracking-widest text-green-primary uppercase mb-4"
+            className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-4"
           >
             Investment Plans
           </motion.span>
@@ -53,14 +53,14 @@ export function InvestmentPlans() {
               className={cn(
                 'relative rounded p-6 transition-all duration-300',
                 plan.highlighted
-                  ? 'glass-card ring-2 ring-green-primary shadow-2xl shadow-green-primary/20 scale-[1.02] z-10'
+                  ? 'glass-card ring-2 ring-brand-primary shadow-2xl shadow-brand-primary/20 scale-[1.02] z-10'
                   : 'glass-card'
               )}
             >
               {/* Best value badge */}
               {plan.highlighted && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-primary text-white text-[10px] font-bold uppercase tracking-wider">
+                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-brand-primary text-white text-[10px] font-bold uppercase tracking-wider">
                     <Sparkles size={10} />
                     Most Popular
                   </span>
@@ -71,7 +71,7 @@ export function InvestmentPlans() {
               <div className="mb-5">
                 <h3 className={cn(
                   'text-sm font-bold uppercase tracking-widest mb-1',
-                  plan.highlighted ? 'text-green-primary' : 'text-slate-500 dark:text-slate-400'
+                  plan.highlighted ? 'text-brand-primary' : 'text-slate-500 dark:text-slate-400'
                 )}>
                   {plan.name}
                 </h3>
@@ -93,7 +93,7 @@ export function InvestmentPlans() {
               <div className={cn(
                 'h-px mb-5',
                 plan.highlighted
-                  ? 'bg-gradient-to-r from-green-primary/0 via-green-primary/50 to-green-primary/0'
+                  ? 'bg-gradient-to-r from-brand-primary/0 via-brand-primary/50 to-brand-primary/0'
                   : 'bg-light-border dark:bg-dark-border'
               )} />
 
@@ -104,8 +104,8 @@ export function InvestmentPlans() {
                     <span className={cn(
                       'mt-0.5 w-4 h-4 flex items-center justify-center flex-shrink-0',
                       plan.highlighted
-                        ? 'bg-green-primary text-dark-base'
-                        : 'bg-green-primary/15 text-green-primary'
+                        ? 'bg-brand-primary text-dark-base'
+                        : 'bg-brand-primary/15 text-brand-primary'
                     )}>
                       <Check size={10} strokeWidth={3} />
                     </span>

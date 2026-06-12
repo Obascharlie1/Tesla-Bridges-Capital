@@ -77,7 +77,7 @@ export default function PlansPage() {
       <div>
         <TopBar title="Investment Plans" subtitle="Manage your investment tier" />
         <div className="flex items-center justify-center h-64">
-          <Loader2 size={24} className="animate-spin text-green-primary" />
+          <Loader2 size={24} className="animate-spin text-brand-primary" />
         </div>
       </div>
     )
@@ -103,7 +103,7 @@ export default function PlansPage() {
                 className={cn(
                   'relative bg-light-base dark:bg-dark-card border rounded-xl p-6 transition-all duration-300',
                   isCurrent
-                    ? 'border-green-primary shadow-lg shadow-green-primary/10'
+                    ? 'border-brand-primary shadow-lg shadow-brand-primary/10'
                     : 'border-light-border dark:border-dark-border'
                 )}
               >
@@ -117,7 +117,7 @@ export default function PlansPage() {
 
                 {plan.highlighted && !isCurrent && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-primary text-white text-[10px] font-bold uppercase tracking-wider">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-brand-primary text-white text-[10px] font-bold uppercase tracking-wider">
                       <Sparkles size={10} /> Most Popular
                     </span>
                   </div>
@@ -126,7 +126,7 @@ export default function PlansPage() {
                 <div className="mb-5">
                   <h3 className={cn(
                     'text-sm font-bold uppercase tracking-widest mb-1',
-                    isCurrent ? 'text-green-primary' : 'text-slate-500 dark:text-slate-400'
+                    isCurrent ? 'text-brand-primary' : 'text-slate-500 dark:text-slate-400'
                   )}>
                     {plan.name}
                   </h3>
@@ -145,7 +145,7 @@ export default function PlansPage() {
                 </div>
 
                 <div className="mb-4 px-3 py-2 bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border">
-                  <p className="text-[11px] font-semibold text-green-primary">{extras.roi}</p>
+                  <p className="text-[11px] font-semibold text-brand-primary">{extras.roi}</p>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                     Min. investment: <span className="font-semibold text-dark-base dark:text-white">{extras.minInvestment}</span>
                   </p>
@@ -154,7 +154,7 @@ export default function PlansPage() {
                 <div className={cn(
                   'h-px mb-4',
                   isCurrent
-                    ? 'bg-gradient-to-r from-green-primary/0 via-green-primary/40 to-green-primary/0'
+                    ? 'bg-gradient-to-r from-brand-primary/0 via-brand-primary/40 to-brand-primary/0'
                     : 'bg-light-border dark:bg-dark-border'
                 )} />
 
@@ -163,7 +163,7 @@ export default function PlansPage() {
                     <li key={feature} className="flex items-start gap-2 text-sm">
                       <span className={cn(
                         'mt-0.5 w-4 h-4 flex items-center justify-center flex-shrink-0',
-                        isCurrent ? 'bg-green-primary text-white' : 'bg-green-primary/15 text-green-primary'
+                        isCurrent ? 'bg-brand-primary text-white' : 'bg-brand-primary/15 text-brand-primary'
                       )}>
                         <Check size={10} strokeWidth={3} />
                       </span>
@@ -179,7 +179,7 @@ export default function PlansPage() {
                 ) : (
                   <button
                     onClick={() => openModal(plan.name)}
-                    className="w-full border border-light-border dark:border-dark-border text-dark-base dark:text-white hover:border-green-primary hover:text-green-primary font-bold py-2.5 text-sm transition-colors flex items-center justify-center gap-2"
+                    className="w-full border border-light-border dark:border-dark-border text-dark-base dark:text-white hover:border-brand-primary hover:text-brand-primary font-bold py-2.5 text-sm transition-colors flex items-center justify-center gap-2"
                   >
                     {isUpgrade ? 'Upgrade' : isDowngrade ? 'Downgrade' : 'Switch'}
                     <ArrowRight size={14} />
@@ -221,14 +221,14 @@ export default function PlansPage() {
                   </>
                 )}
               </div>
-              <p className="text-xs text-green-primary font-semibold">{planExtras[selectedPlanData.name].roi}</p>
+              <p className="text-xs text-brand-primary font-semibold">{planExtras[selectedPlanData.name].roi}</p>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                 Min. investment: <span className="font-semibold text-dark-base dark:text-white">{planExtras[selectedPlanData.name].minInvestment}</span>
               </p>
             </div>
 
             {saveError && (
-              <p className="text-xs text-green-primary mb-3">{saveError}</p>
+              <p className="text-xs text-brand-primary mb-3">{saveError}</p>
             )}
 
             <div className="flex gap-3">
@@ -242,7 +242,7 @@ export default function PlansPage() {
               <button
                 onClick={confirmSwitch}
                 disabled={saving}
-                className="flex-1 bg-green-primary hover:bg-green-dim disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-2.5 text-sm transition-colors flex items-center justify-center gap-2"
+                className="flex-1 bg-brand-primary hover:bg-brand-dim disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-2.5 text-sm transition-colors flex items-center justify-center gap-2"
               >
                 {saving ? <><Loader2 size={14} className="animate-spin" /> Saving…</> : 'Confirm Switch'}
               </button>

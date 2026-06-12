@@ -28,10 +28,12 @@ export function Navbar() {
         className="fixed top-0 left-0 right-0 z-50 pt-2 px-4 sm:px-6 lg:px-8"
       >
         <div className={cn(
-          'max-w-7xl mx-auto rounded-xl border transition-all duration-300 px-4 sm:px-5',
+          'max-w-7xl mx-auto rounded-2xl border transition-all duration-300 px-4 sm:px-5',
+          'bg-white/60 dark:bg-white/5 border-white/50 dark:border-white/10',
+          'backdrop-blur-2xl backdrop-saturate-150',
           scrolled
-            ? 'bg-white/95 dark:bg-dark-card/95 border-light-border dark:border-dark-border backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-black/25 py-2'
-            : 'bg-white/80 dark:bg-dark-card/80 border-light-border/60 dark:border-dark-border/60 backdrop-blur-sm py-2.5'
+            ? 'shadow-xl shadow-black/10 dark:shadow-black/40 py-2'
+            : 'shadow-lg shadow-black/5 dark:shadow-black/25 py-2.5'
         )}>
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -70,7 +72,7 @@ export function Navbar() {
               </Link>
               <Link
                 href="/auth/register"
-                className="inline-flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm bg-green-primary text-white hover:bg-green-dim border border-green-primary transition-all duration-150"
+                className="inline-flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm bg-brand-primary text-white hover:bg-brand-dim border border-brand-primary transition-all duration-150"
               >
                 Get Started
               </Link>
@@ -123,14 +125,14 @@ export function Navbar() {
                 <Link
                   href="/auth/login"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm border border-light-border dark:border-dark-border text-dark-base dark:text-white hover:border-green-primary hover:text-green-primary transition-all duration-150"
+                  className="flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm border border-light-border dark:border-dark-border text-dark-base dark:text-white hover:border-brand-primary hover:text-brand-primary transition-all duration-150"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/auth/register"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm bg-green-primary text-white hover:bg-green-dim border border-green-primary transition-all duration-150"
+                  className="flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg px-4 py-2 text-sm bg-brand-primary text-white hover:bg-brand-dim border border-brand-primary transition-all duration-150"
                 >
                   Get Started Free
                 </Link>

@@ -13,10 +13,10 @@ export function Button({ variant = 'primary', size = 'md', className, children, 
   const base = 'inline-flex items-center justify-center gap-2 font-bold tracking-tight rounded-lg transition-all duration-150 cursor-pointer select-none'
 
   const variants = {
-    primary: 'bg-green-primary text-white hover:bg-green-dim border border-green-primary',
+    primary: 'bg-brand-primary text-white hover:bg-brand-dim border border-brand-primary',
     secondary: 'bg-dark-base text-white dark:bg-white dark:text-dark-base border border-dark-base dark:border-white hover:opacity-80',
     ghost: 'text-slate-500 hover:text-dark-base dark:hover:text-white border border-transparent hover:bg-light-surface dark:hover:bg-dark-card',
-    outline: 'border border-light-border dark:border-dark-border text-dark-base dark:text-white hover:border-green-primary hover:text-green-primary bg-transparent',
+    outline: 'border border-light-border dark:border-dark-border text-dark-base dark:text-white hover:border-brand-primary hover:text-brand-primary bg-transparent',
   }
 
   const sizes = {
