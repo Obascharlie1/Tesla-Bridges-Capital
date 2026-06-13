@@ -52,7 +52,7 @@ export function Hero() {
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.05]"
         style={{
-          backgroundImage: `linear-gradient(#F4511E 1px, transparent 1px), linear-gradient(90deg, #F4511E 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(#E0241C 1px, transparent 1px), linear-gradient(90deg, #E0241C 1px, transparent 1px)`,
           backgroundSize: '80px 80px',
         }}
       />
@@ -175,16 +175,16 @@ export function Hero() {
                 <svg viewBox="0 0 500 140" preserveAspectRatio="none" className="w-full h-full">
                   <defs>
                     <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#F4511E" stopOpacity="0.15" />
-                      <stop offset="100%" stopColor="#F4511E" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#E0241C" stopOpacity="0.15" />
+                      <stop offset="100%" stopColor="#E0241C" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   {[0.25, 0.5, 0.75].map((y) => (
                     <line key={y} x1="0" y1={y * 140} x2="500" y2={y * 140} stroke="currentColor" strokeOpacity="0.06" strokeWidth="1" />
                   ))}
                   <path d={chartPath.area} fill="url(#chartFill)" />
-                  <path d={chartPath.line} fill="none" stroke="#F4511E" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" />
-                  <circle cx="500" cy="19" r="3" fill="#F4511E" />
+                  <path d={chartPath.line} fill="none" stroke="#E0241C" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" />
+                  <circle cx="500" cy="19" r="3" fill="#E0241C" />
                 </svg>
               </div>
 

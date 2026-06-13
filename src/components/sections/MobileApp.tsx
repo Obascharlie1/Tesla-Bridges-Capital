@@ -156,12 +156,12 @@ export function MobileApp() {
                       <svg viewBox="0 0 220 60" className="w-full h-10">
                                         <defs>
                           <linearGradient id="mobileGrad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="#F4511E" stopOpacity="0.25" />
-                            <stop offset="100%" stopColor="#F4511E" stopOpacity="0" />
+                            <stop offset="0%" stopColor="#E0241C" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#E0241C" stopOpacity="0" />
                           </linearGradient>
                         </defs>
                         <path d="M0,50 C20,45 35,40 55,35 C75,30 85,38 105,30 C125,22 135,18 155,12 C170,8 185,10 220,4 L220,60 L0,60 Z" fill="url(#mobileGrad)" />
-                        <path d="M0,50 C20,45 35,40 55,35 C75,30 85,38 105,30 C125,22 135,18 155,12 C170,8 185,10 220,4" fill="none" stroke="#F4511E" strokeWidth="2" strokeLinecap="square" />
+                        <path d="M0,50 C20,45 35,40 55,35 C75,30 85,38 105,30 C125,22 135,18 155,12 C170,8 185,10 220,4" fill="none" stroke="#E0241C" strokeWidth="2" strokeLinecap="square" />
                       </svg>
                     </div>
 

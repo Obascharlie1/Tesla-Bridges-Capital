@@ -158,7 +158,7 @@ export const testimonials = [
     company: 'Independent',
     avatar: 'SM',
     image: 'https://i.pravatar.cc/80?img=47',
-    color: '#F4511E',
+    color: '#E0241C',
     quote: 'Tesla Bridges Capital\'s AI signals are genuinely remarkable. My risk-adjusted returns are up 340% over 12 months. I\'ve used Bloomberg, Refinitiv — nothing comes close for the price.',
     profit: '+340%',
     period: '12 months',

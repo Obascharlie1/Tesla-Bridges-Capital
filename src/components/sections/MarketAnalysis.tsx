@@ -43,7 +43,7 @@ export function MarketAnalysis() {
               <div className="relative">
                 <span className="absolute inset-0 rounded-full bg-brand-primary/30 animate-ping" />
                 <div className="relative w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-200">
-                  <Play size={26} fill="#F4511E" className="text-brand-primary ml-1" />
+                  <Play size={26} fill="#E0241C" className="text-brand-primary ml-1" />
                 </div>
               </div>
             </div>

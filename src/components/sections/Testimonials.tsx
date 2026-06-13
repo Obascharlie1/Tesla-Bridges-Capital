@@ -132,7 +132,7 @@ export function Testimonials() {
                   {/* Pulse rings */}
                   <span className="absolute inset-0 rounded-full bg-white/20 animate-ping" />
                   <div className="relative w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
-                    <Play size={22} fill="#F4511E" className="text-brand-primary ml-1" />
+                    <Play size={22} fill="#E0241C" className="text-brand-primary ml-1" />
                   </div>
                 </div>
               </div>

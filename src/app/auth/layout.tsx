@@ -12,8 +12,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           style={{
             opacity: 0.05,
             backgroundImage: `
-              linear-gradient(#F4511E 1px, transparent 1px),
-              linear-gradient(90deg, #F4511E 1px, transparent 1px)
+              linear-gradient(#E0241C 1px, transparent 1px),
+              linear-gradient(90deg, #E0241C 1px, transparent 1px)
             `,
             backgroundSize: '40px 40px',
           }}

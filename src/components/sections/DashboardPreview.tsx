@@ -112,16 +112,16 @@ export function DashboardPreview() {
                 <svg viewBox="0 0 800 200" preserveAspectRatio="none" className="w-full h-full">
                   <defs>
                     <linearGradient id="bigChartGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#F4511E" stopOpacity="0.15" />
-                      <stop offset="100%" stopColor="#F4511E" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#E0241C" stopOpacity="0.15" />
+                      <stop offset="100%" stopColor="#E0241C" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   {[0.25, 0.5, 0.75].map((y) => (
                     <line key={y} x1="0" y1={y * 200} x2="800" y2={y * 200} stroke="currentColor" strokeOpacity="0.05" strokeWidth="1" />
                   ))}
                   <path d={bigChartPath.area} fill="url(#bigChartGrad)" />
-                  <path d={bigChartPath.line} fill="none" stroke="#F4511E" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter" />
-                  <circle cx="800" cy="28" r="4" fill="#F4511E" />
+                  <path d={bigChartPath.line} fill="none" stroke="#E0241C" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter" />
+                  <circle cx="800" cy="28" r="4" fill="#E0241C" />
                 </svg>
               </div>
             </div>
