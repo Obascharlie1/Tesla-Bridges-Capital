@@ -48,6 +48,25 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
+  // Check suspension — suspended users can only access messages and the suspended notice page
+  if (user && pathname.startsWith('/dashboard')) {
+    const isAllowed =
+      pathname === '/dashboard/suspended' ||
+      pathname.startsWith('/dashboard/messages')
+
+    if (!isAllowed) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('is_suspended')
+        .eq('id', user.id)
+        .single()
+
+      if (profile?.is_suspended) {
+        return NextResponse.redirect(new URL('/dashboard/suspended', request.url))
+      }
+    }
+  }
+
   return response
 }
 
