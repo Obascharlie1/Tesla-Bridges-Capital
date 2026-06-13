@@ -99,7 +99,7 @@ export function Hero() {
             >
               <div className="w-6 h-px bg-brand-primary" />
               <span className="text-xs font-bold tracking-widest text-brand-primary uppercase">
-                AI Trading Platform
+                Engineered for Speed
               </span>
             </motion.div>
 
@@ -110,11 +110,11 @@ export function Hero() {
               animate="visible"
               className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white leading-[1.02] tracking-tight mb-6"
             >
-              {arrangeLetters('Trade with')}
+              {arrangeLetters('Trade')}
               <br />
-              {arrangeLetters('machine', 'gradient-text')}
+              {arrangeLetters('faster.', 'gradient-text')}
               <br />
-              {arrangeLetters('precision.')}
+              {arrangeLetters('Win more.')}
             </motion.h1>
 
             <motion.p
@@ -123,7 +123,7 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-base sm:text-lg text-slate-400 leading-relaxed mb-8 max-w-md mx-auto lg:mx-0 lg:border-l-2 lg:border-dark-border lg:pl-4"
             >
-              Institutional-grade AI signals, sub-50ms execution, and automated risk management. The same tools hedge funds use — built for individual traders.
+              AI signals, sub-50ms fills, and automated risk control — the firepower hedge funds guard, handed to traders who move first.
             </motion.p>
 
             <motion.div

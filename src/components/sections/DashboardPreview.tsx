@@ -42,7 +42,7 @@ export function DashboardPreview() {
             transition={{ delay: 0.05 }}
             className="text-4xl lg:text-5xl font-bold text-dark-base dark:text-light-base tracking-tight"
           >
-            Your wealth, <span className="gradient-text">visualized</span>
+Every position, <span className="gradient-text">in real time</span>
           </motion.h2>
         </div>
 

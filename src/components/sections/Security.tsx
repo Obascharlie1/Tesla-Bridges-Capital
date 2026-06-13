@@ -44,8 +44,7 @@ export function Security() {
             transition={{ delay: 0.05 }}
             className="text-4xl lg:text-5xl font-bold text-dark-base dark:text-light-base tracking-tight mb-4"
           >
-            Your assets are{' '}
-            <span className="gradient-text">protected</span>
+            Your capital, <span className="gradient-text">locked down</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -54,7 +53,7 @@ export function Security() {
             transition={{ delay: 0.1 }}
             className="text-slate-500 dark:text-slate-400 leading-relaxed"
           >
-            Bank-grade security infrastructure, independent audits, and regulatory compliance across every jurisdiction we operate in.
+            Bank-grade infrastructure, independent audits, and full regulatory compliance — so you can trade hard and sleep easy.
           </motion.p>
         </div>
 

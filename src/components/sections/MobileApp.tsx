@@ -38,7 +38,7 @@ export function MobileApp() {
               transition={{ delay: 0.05 }}
               className="text-4xl lg:text-5xl font-black text-light-base tracking-tight mb-4"
             >
-              Your portfolio
+              The trading desk
               <br />
               in your{' '}
               <span className="gradient-text">pocket</span>
@@ -50,7 +50,7 @@ export function MobileApp() {
               transition={{ delay: 0.1 }}
               className="text-slate-400 leading-relaxed mb-8"
             >
-              The Tesla Capital mobile app gives you full platform power on iOS and Android. Trade, monitor, and manage from anywhere in the world.
+              Full platform firepower on iOS and Android. Fire orders, track P&L, and manage risk from anywhere — the market never waits, and neither should you.
             </motion.p>
 
             {/* Feature list */}

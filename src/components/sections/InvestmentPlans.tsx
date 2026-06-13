@@ -18,7 +18,7 @@ export function InvestmentPlans() {
             viewport={{ once: true }}
             className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-4"
           >
-            Investment Plans
+            Pick Your Tier
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
@@ -27,8 +27,8 @@ export function InvestmentPlans() {
             transition={{ delay: 0.05 }}
             className="text-4xl lg:text-5xl font-bold text-dark-base dark:text-light-base tracking-tight mb-4"
           >
-            Simple, transparent{' '}
-            <span className="gradient-text">pricing</span>
+            Priced to{' '}
+            <span className="gradient-text">scale with you</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -37,7 +37,7 @@ export function InvestmentPlans() {
             transition={{ delay: 0.1 }}
             className="text-slate-500 dark:text-slate-400 leading-relaxed"
           >
-            No hidden fees. No commissions. Start free and scale as your portfolio grows.
+            Zero hidden fees. Zero commissions. Start free, then level up the moment your size demands it.
           </motion.p>
         </div>
 

@@ -29,18 +29,18 @@ export function FinalCTA() {
         >
           {/* Label */}
           <span className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-6">
-            Start Today
+            The Bell Is Ringing
           </span>
 
           {/* Headline */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-dark-base dark:text-light-base tracking-tight leading-tight mb-6">
-            Join 10 million investors
+            10 million traders
             <br />
-            <span className="gradient-text">building real wealth</span>
+            <span className="gradient-text">already have the edge</span>
           </h2>
 
           <p className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed mb-10 max-w-xl mx-auto">
-            Create your free account in 2 minutes. No credit card, no commitments — just smarter investing from day one.
+            Spin up your free account in 2 minutes. No card, no commitment — just a faster, sharper way to trade from your very first order.
           </p>
 
           {/* Email form */}

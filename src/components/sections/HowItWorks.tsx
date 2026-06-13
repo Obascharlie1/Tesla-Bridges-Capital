@@ -24,7 +24,7 @@ export function HowItWorks() {
             viewport={{ once: true }}
             className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-4"
           >
-            Get Started
+            Go Live
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
@@ -33,7 +33,7 @@ export function HowItWorks() {
             transition={{ delay: 0.05 }}
             className="text-4xl lg:text-5xl font-bold text-dark-base dark:text-light-base tracking-tight mb-4"
           >
-            Up and running in{' '}
+            From zero to first trade in{' '}
             <span className="gradient-text">minutes</span>
           </motion.h2>
           <motion.p
@@ -43,7 +43,7 @@ export function HowItWorks() {
             transition={{ delay: 0.1 }}
             className="text-slate-500 dark:text-slate-400 leading-relaxed"
           >
-            Three simple steps separate you from institutional-grade portfolio management.
+            Three steps stand between you and a fully-loaded trading desk. No friction, no waiting.
           </motion.p>
         </div>
 

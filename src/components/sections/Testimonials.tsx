@@ -67,7 +67,7 @@ export function Testimonials() {
           viewport={{ once: true }}
           className="text-3xl sm:text-4xl font-bold text-dark-base dark:text-white mb-14 text-center"
         >
-          What Our Clients Say:
+          Real traders. Real numbers.
         </motion.h2>
 
         {/* 3-column testimonial grid */}

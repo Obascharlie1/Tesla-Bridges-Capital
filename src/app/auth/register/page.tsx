@@ -103,6 +103,17 @@ export default function RegisterPage() {
 
     if (authErr) { setError(authErr.message); setLoading(false); return }
 
+    // No email confirmation — make sure we have an active session right away.
+    // (If the project still has "Confirm email" on, signUp returns no session,
+    // so we sign in explicitly to land the user straight in the dashboard.)
+    if (!data.session) {
+      const { error: signInErr } = await supabase.auth.signInWithPassword({
+        email: form.email,
+        password: form.password,
+      })
+      if (signInErr) { setError(signInErr.message); setLoading(false); return }
+    }
+
     // Update profile with personal details (trigger already created the row)
     if (data.user) {
       await supabase.from('profiles').update({

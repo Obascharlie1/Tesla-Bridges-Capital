@@ -63,26 +63,26 @@ export function MarketAnalysis() {
           >
             {/* Eyebrow */}
             <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary mb-4">
-              Expert Network
+              The War Room
             </p>
 
             <h2 className="text-3xl sm:text-4xl font-bold text-dark-base dark:text-white leading-tight mb-6">
-              Market analysis and{' '}
-              <span className="gradient-text">trade inspiration</span>
+              The setups that{' '}
+              <span className="gradient-text">move the needle</span>
             </h2>
 
             <p className="text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-8">
-              With a thriving network of experts, being a client of BIT-TESLA opens doors to
-              many opportunities. Powerful market insight and the top trade setups in the
-              industry. You will have extensive connections to professional traders.
+              Tap into a desk of pro analysts feeding you live, actionable setups — not noise.
+              Tesla Capital plugs you straight into the same flow, conviction calls, and market
+              reads the sharpest traders use to stay ahead of the tape.
             </p>
 
             {/* Feature list */}
             <ul className="space-y-3 mb-8">
               {[
-                'Real-time signals from global analysts',
-                'Daily market briefings & outlooks',
-                'Direct access to professional trade setups',
+                'Live signals streamed from global analysts',
+                'Daily pre-market briefings & game plans',
+                'Direct line to high-conviction trade setups',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
                   <span className="mt-1 w-4 h-4 flex-shrink-0 rounded-full bg-brand-primary/15 flex items-center justify-center">

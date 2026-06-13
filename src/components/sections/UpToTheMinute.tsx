@@ -23,12 +23,12 @@ export function UpToTheMinute() {
             </p>
 
             <h2 className="text-3xl sm:text-4xl font-bold text-dark-base dark:text-white leading-tight mb-6">
-              Up to the minute{' '}
-              <span className="gradient-text">analysis</span>
+              News that hits before the{' '}
+              <span className="gradient-text">candle does</span>
             </h2>
 
             <p className="text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-8">
-              Inform your decisions with timely dispatches from our large team of global analysts.
+              Trade on information, not hindsight. Our global desk pushes market-moving dispatches to you the moment they break — so you react first.
             </p>
 
             {/* Feature list */}
@@ -69,7 +69,7 @@ export function UpToTheMinute() {
 
               <Image
                 src="/images/phones-mockup.png"
-                alt="BIT-TESLA mobile trading app"
+                alt="Tesla Capital mobile trading app"
                 width={420}
                 height={520}
                 className="w-full h-auto drop-shadow-2xl animate-float"

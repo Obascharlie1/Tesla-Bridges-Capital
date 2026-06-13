@@ -60,7 +60,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 max-w-xs">
-              Institutional-grade investment intelligence for everyone. Build wealth with AI-powered market analysis.
+              Hedge-fund firepower for every trader. AI signals, sub-50ms execution, and the edge to move first.
             </p>
             <div className="flex items-center gap-3">
               {socials.map(({ label, svg }) => (
@@ -97,10 +97,10 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-light-border dark:border-dark-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            © 2026 BIT-TESLA Technologies Inc. All rights reserved.
+            © 2026 Tesla Capital Technologies Inc. All rights reserved.
           </p>
           <p className="text-xs text-slate-500 dark:text-slate-400 text-center sm:text-right max-w-md">
-            BIT-TESLA is registered with the SEC and FINRA. Investing involves risk. Past performance does not guarantee future results.
+            Tesla Capital is registered with the SEC and FINRA. Investing involves risk. Past performance does not guarantee future results.
           </p>
         </div>
       </div>

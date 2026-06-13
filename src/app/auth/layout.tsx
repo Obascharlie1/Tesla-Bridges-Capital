@@ -57,7 +57,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
           {/* Bottom note */}
           <p className="text-xs text-slate-500 mt-12">
-            &copy; {new Date().getFullYear()} BIT-TESLA. All rights reserved.
+            &copy; {new Date().getFullYear()} Tesla Capital. All rights reserved.
           </p>
         </div>
       </div>
