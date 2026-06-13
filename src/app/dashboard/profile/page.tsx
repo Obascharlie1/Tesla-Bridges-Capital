@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Loader2, Edit2, Check, X, ShieldCheck, ShieldAlert, ShieldOff, Lock } from 'lucide-react'
+import { Loader2, Edit2, Check, X, ShieldCheck, ShieldAlert, ShieldOff } from 'lucide-react'
 import { TopBar } from '@/components/dashboard/TopBar'
 
 const COUNTRIES = [
@@ -42,56 +42,6 @@ interface Profile {
   balance:       number
   profit:        number
   created_at:    string
-}
-
-function PinSection() {
-  const [pin,    setPin]    = useState('')
-  const [confirm, setConfirm] = useState('')
-  const [saving,  setSaving]  = useState(false)
-  const [msg,     setMsg]     = useState<{ ok: boolean; text: string } | null>(null)
-
-  async function handleSetPin(e: React.FormEvent) {
-    e.preventDefault()
-    if (pin.length < 4) { setMsg({ ok: false, text: 'PIN must be at least 4 digits.' }); return }
-    if (pin !== confirm)  { setMsg({ ok: false, text: 'PINs do not match.' }); return }
-    setSaving(true)
-    const res = await fetch('/api/withdraw/pin', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'set', pin }),
-    })
-    const json = await res.json()
-    setSaving(false)
-    if (res.ok) { setMsg({ ok: true, text: 'Withdrawal PIN updated.' }); setPin(''); setConfirm('') }
-    else         setMsg({ ok: false, text: json?.error ?? 'Failed to set PIN.' })
-  }
-
-  return (
-    <div className="bg-light-base dark:bg-dark-card border border-light-border dark:border-dark-border rounded-xl p-6 space-y-4">
-      <div className="flex items-center gap-2 mb-1">
-        <Lock size={15} className="text-brand-primary" />
-        <h3 className="text-sm font-bold text-dark-base dark:text-white">Withdrawal PIN</h3>
-      </div>
-      <p className="text-xs text-slate-500 dark:text-slate-400">Set a 4–6 digit PIN required to confirm every withdrawal.</p>
-      <form onSubmit={handleSetPin} className="space-y-3">
-        <div>
-          <label className="block text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">New PIN</label>
-          <input type="password" inputMode="numeric" maxLength={6} value={pin} onChange={e => setPin(e.target.value.replace(/\D/g,''))}
-            placeholder="••••••" className="w-full px-4 py-2.5 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card text-dark-base dark:text-white text-sm focus:outline-none focus:border-brand-primary transition-colors placeholder:text-slate-400 tracking-widest" />
-        </div>
-        <div>
-          <label className="block text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Confirm PIN</label>
-          <input type="password" inputMode="numeric" maxLength={6} value={confirm} onChange={e => setConfirm(e.target.value.replace(/\D/g,''))}
-            placeholder="••••••" className="w-full px-4 py-2.5 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card text-dark-base dark:text-white text-sm focus:outline-none focus:border-brand-primary transition-colors placeholder:text-slate-400 tracking-widest" />
-        </div>
-        {msg && <p className={`text-xs font-medium ${msg.ok ? 'text-emerald-600 dark:text-emerald-400' : 'text-brand-primary'}`}>{msg.text}</p>}
-        <button type="submit" disabled={saving || !pin || !confirm}
-          className="w-full bg-brand-primary hover:bg-brand-dim disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3 text-sm transition-colors flex items-center justify-center gap-2">
-          {saving ? <><Loader2 size={15} className="animate-spin" /> Saving…</> : 'Set Withdrawal PIN'}
-        </button>
-      </form>
-    </div>
-  )
 }
 
 const inputCls = 'w-full px-4 py-2.5 border border-light-border dark:border-dark-border bg-light-base dark:bg-dark-card text-dark-base dark:text-white text-sm focus:outline-none focus:border-brand-primary transition-colors placeholder:text-slate-400'
@@ -363,9 +313,6 @@ export default function ProfilePage() {
             {saving ? <><Loader2 size={16} className="animate-spin" /> Saving…</> : <><Check size={16} /> Save Changes</>}
           </button>
         )}
-
-        {/* Withdrawal PIN */}
-        <PinSection />
 
       </div>
     </div>
