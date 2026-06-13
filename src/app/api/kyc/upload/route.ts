@@ -18,6 +18,9 @@ export async function POST(request: NextRequest) {
 
   const admin = createAdminClient()
 
+  // Ensure bucket exists (no-op if already created)
+  await admin.storage.createBucket('kyc-documents', { public: false })
+
   // Upload front
   const frontExt  = front.name.split('.').pop()
   const frontPath = `${user.id}/front.${frontExt}`
