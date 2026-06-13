@@ -31,6 +31,31 @@ const liveMetrics = [
   { label: 'EUR/USD', value: '1.0842', change: '-0.12%', up: false },
 ]
 
+// ── Headline "arrange" animation ─────────────────────────────
+// Letters fly in from a scattered/blurred offset and settle into place.
+const headlineContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.035, delayChildren: 0.15 } },
+}
+const headlineLetter = {
+  hidden: { opacity: 0, y: 28, rotate: -8, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotate: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+function arrangeLetters(text: string, extra = '') {
+  return text.split('').map((ch, i) => (
+    <motion.span key={extra + i} variants={headlineLetter} className={`inline-block ${extra}`}>
+      {ch === ' ' ? ' ' : ch}
+    </motion.span>
+  ))
+}
+
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-28 sm:pt-24 lg:pt-20 pb-16 overflow-hidden">
@@ -78,39 +103,18 @@ export function Hero() {
               </span>
             </motion.div>
 
-            {/* Headline */}
+            {/* Headline — letters arrange into place */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              variants={headlineContainer}
+              initial="hidden"
+              animate="visible"
               className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white leading-[1.02] tracking-tight mb-6"
             >
-              Trade with
+              {arrangeLetters('Trade with')}
               <br />
-              <span className="relative inline-block gradient-text">
-                machine
-                {/* hand-drawn scribble underline */}
-                <svg
-                  className="absolute left-0 -bottom-3 sm:-bottom-4 w-full h-[0.42em] overflow-visible pointer-events-none"
-                  viewBox="0 0 300 30"
-                  fill="none"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <motion.path
-                    d="M6,17 C58,6 104,26 152,15 C200,5 248,25 294,15 C242,23 132,22 12,20"
-                    stroke="#E0241C"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.8, ease: 'easeInOut' }}
-                  />
-                </svg>
-              </span>
+              {arrangeLetters('machine', 'gradient-text')}
               <br />
-              precision.
+              {arrangeLetters('precision.')}
             </motion.h1>
 
             <motion.p
