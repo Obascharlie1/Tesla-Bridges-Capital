@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { ArrowRight, TrendingUp, TrendingDown } from 'lucide-react'
 import Link from 'next/link'
 import { chartData, portfolioAssets } from '@/data'
@@ -33,18 +33,18 @@ const liveMetrics = [
 
 // ── Headline "arrange" animation ─────────────────────────────
 // Letters fly in from a scattered/blurred offset and settle into place.
-const headlineContainer = {
+const headlineContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.035, delayChildren: 0.15 } },
 }
-const headlineLetter = {
+const headlineLetter: Variants = {
   hidden: { opacity: 0, y: 28, rotate: -8, filter: 'blur(8px)' },
   visible: {
     opacity: 1,
     y: 0,
     rotate: 0,
     filter: 'blur(0px)',
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 }
 
