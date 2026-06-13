@@ -26,7 +26,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             <Image
               src="/images/logo.png"
               alt="Tesla Bridges Capital"
-              width={216}
+              width={356}
               height={22}
               className="h-7 w-auto brightness-0 invert"
             />

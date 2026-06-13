@@ -41,7 +41,7 @@ export function Navbar() {
               <Image
                 src="/images/logo.png"
                 alt="Tesla Bridges Capital"
-                width={216}
+                width={356}
                 height={22}
                 className="h-5 w-auto sm:h-7"
                 priority

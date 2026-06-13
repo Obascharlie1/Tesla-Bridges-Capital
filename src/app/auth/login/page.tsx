@@ -47,7 +47,7 @@ export default function LoginPage() {
         <Image
           src="/images/logo.png"
           alt="Tesla Bridges Capital"
-          width={196}
+          width={324}
           height={20}
           className="h-6 w-auto dark:brightness-0 dark:invert"
         />
