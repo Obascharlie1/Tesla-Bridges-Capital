@@ -44,7 +44,7 @@ export function Security() {
             transition={{ delay: 0.05 }}
             className="text-4xl lg:text-5xl font-bold text-dark-base dark:text-light-base tracking-tight mb-4"
           >
-            Your capital, <span className="gradient-text">locked down</span>
+            Your capital, locked down
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -64,7 +64,7 @@ export function Security() {
             return (
               <GlassCard key={feature.title} delay={i * 0.07} className="p-5 flex items-start gap-4">
                 <div className="w-10 h-10 rounded bg-brand-primary/10 dark:bg-brand-primary/15 flex items-center justify-center flex-shrink-0">
-                  <Icon size={18} className="text-brand-primary" />
+                  <Icon size={18} className="text-slate-500 dark:text-slate-400" />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-dark-base dark:text-light-base mb-1">{feature.title}</h3>

@@ -28,7 +28,7 @@ export function InvestmentPlans() {
             className="text-4xl lg:text-5xl font-bold text-dark-base dark:text-light-base tracking-tight mb-4"
           >
             Priced to{' '}
-            <span className="gradient-text">scale with you</span>
+            scale with you
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}

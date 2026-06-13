@@ -227,7 +227,7 @@ export function Hero() {
                       <p className="text-xs font-bold text-white">{asset.symbol}</p>
                       <p className="text-[10px] text-slate-400 font-mono">{asset.allocation}%</p>
                     </div>
-                    <span className={`text-xs font-bold flex items-center gap-0.5 ${asset.changePercent >= 0 ? 'text-brand-primary' : 'text-red-400'}`}>
+                    <span className={`text-xs font-bold flex items-center gap-0.5 ${asset.changePercent >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                       {asset.changePercent >= 0 ? <TrendingUp size={10} /> : <TrendingDown size={10} />}
                       {asset.changePercent >= 0 ? '+' : ''}{asset.changePercent}%
                     </span>
@@ -243,7 +243,7 @@ export function Hero() {
                   <div key={m.label} className="flex items-center gap-2 px-4 py-2 border-r border-dark-border whitespace-nowrap flex-shrink-0">
                     <span className="text-[10px] font-bold text-slate-400 uppercase">{m.label}</span>
                     <span className="text-[10px] font-mono font-bold text-white">{m.value}</span>
-                    <span className={`text-[10px] font-bold ${m.up ? 'text-brand-primary' : 'text-slate-400'}`}>{m.change}</span>
+                    <span className={`text-[10px] font-bold ${m.up ? 'text-emerald-400' : 'text-red-400'}`}>{m.change}</span>
                   </div>
                 ))}
               </div>

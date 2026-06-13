@@ -37,7 +37,7 @@ export function Features() {
             className="text-4xl lg:text-5xl font-bold text-dark-base dark:text-light-base tracking-tight mb-4"
           >
             Built to{' '}
-            <span className="gradient-text">win the trade</span>
+            win the trade
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -62,7 +62,7 @@ export function Features() {
               >
                 {/* Icon */}
                 <div className="w-11 h-11 bg-brand-primary/10 dark:bg-brand-primary/15 flex items-center justify-center mb-4 group-hover:bg-brand-primary/20 transition-colors duration-300">
-                  <Icon size={20} className="text-brand-primary" />
+                  <Icon size={20} className="text-slate-500 dark:text-slate-400" />
                 </div>
 
                 {/* Tag */}

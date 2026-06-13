@@ -41,7 +41,7 @@ export function MobileApp() {
               The trading desk
               <br />
               in your{' '}
-              <span className="gradient-text">pocket</span>
+              pocket
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -67,7 +67,7 @@ export function MobileApp() {
                     className="flex items-center gap-3"
                   >
                     <div className="w-8 h-8 rounded-md bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Icon size={16} className="text-brand-primary" />
+                      <Icon size={16} className="text-slate-500 dark:text-slate-400" />
                     </div>
                     <span className="text-sm text-light-base/80">{feature.label}</span>
                   </motion.li>
@@ -208,7 +208,7 @@ export function MobileApp() {
                 className="absolute -right-8 top-16 bg-dark-card border border-dark-border rounded p-3 shadow-xl min-w-[140px]"
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <CheckCircle size={12} className="text-brand-primary" />
+                  <CheckCircle size={12} className="text-emerald-500" />
                   <span className="text-[9px] font-bold text-brand-primary uppercase">Trade Executed</span>
                 </div>
                 <p className="text-[11px] font-bold text-light-base">Bought NVDA × 10</p>

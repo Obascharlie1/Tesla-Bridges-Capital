@@ -34,7 +34,7 @@ export function HowItWorks() {
             className="text-4xl lg:text-5xl font-bold text-dark-base dark:text-light-base tracking-tight mb-4"
           >
             From zero to first trade in{' '}
-            <span className="gradient-text">minutes</span>
+            minutes
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -76,7 +76,7 @@ export function HowItWorks() {
                 <div className="relative inline-flex flex-col items-center mb-6">
                   <div className="w-18 h-18 border border-brand-primary/30 flex items-center justify-center relative">
                     <div className="w-14 h-14 bg-brand-primary/10 dark:bg-brand-primary/15 flex items-center justify-center">
-                      <Icon size={24} className="text-brand-primary" />
+                      <Icon size={24} className="text-slate-500 dark:text-slate-400" />
                     </div>
                     <div className="absolute -top-2.5 -right-2.5 w-5 h-5 bg-brand-primary flex items-center justify-center">
                       <span className="text-[10px] font-bold text-white">{i + 1}</span>

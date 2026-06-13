@@ -62,13 +62,13 @@ export function MarketAnalysis() {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
           >
             {/* Eyebrow */}
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary mb-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
               The War Room
             </p>
 
             <h2 className="text-3xl sm:text-4xl font-bold text-dark-base dark:text-white leading-tight mb-6">
               The setups that{' '}
-              <span className="gradient-text">move the needle</span>
+              move the needle
             </h2>
 
             <p className="text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-8">

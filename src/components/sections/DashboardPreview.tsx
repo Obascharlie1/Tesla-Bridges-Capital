@@ -42,7 +42,7 @@ export function DashboardPreview() {
             transition={{ delay: 0.05 }}
             className="text-4xl lg:text-5xl font-bold text-dark-base dark:text-light-base tracking-tight"
           >
-Every position, <span className="gradient-text">in real time</span>
+Every position, in real time
           </motion.h2>
         </div>
 
@@ -101,7 +101,7 @@ Every position, <span className="gradient-text">in real time</span>
                   ].map((metric) => (
                     <div key={metric.label}>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mb-0.5">{metric.label}</p>
-                      <p className={`text-sm font-bold ${metric.positive ? 'text-brand-primary' : 'text-red-500'}`}>{metric.value}</p>
+                      <p className={`text-sm font-bold ${metric.positive ? 'text-emerald-400' : 'text-red-500'}`}>{metric.value}</p>
                     </div>
                   ))}
                 </div>
@@ -152,7 +152,7 @@ Every position, <span className="gradient-text">in real time</span>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-bold text-dark-base dark:text-light-base">{asset.symbol}</span>
-                        <span className={`text-xs font-semibold ${asset.changePercent >= 0 ? 'text-brand-primary' : 'text-red-500'}`}>
+                        <span className={`text-xs font-semibold ${asset.changePercent >= 0 ? 'text-emerald-400' : 'text-red-500'}`}>
                           {asset.changePercent >= 0 ? '+' : ''}{asset.changePercent}%
                         </span>
                       </div>

@@ -36,7 +36,7 @@ export function FinalCTA() {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-dark-base dark:text-light-base tracking-tight leading-tight mb-6">
             10 million traders
             <br />
-            <span className="gradient-text">already have the edge</span>
+            already have the edge
           </h2>
 
           <p className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed mb-10 max-w-xl mx-auto">
@@ -70,7 +70,7 @@ export function FinalCTA() {
               animate={{ opacity: 1, scale: 1 }}
               className="flex items-center justify-center gap-3 py-4 mb-6"
             >
-              <CheckCircle size={20} className="text-brand-primary" />
+              <CheckCircle size={20} className="text-emerald-500" />
               <span className="text-base font-semibold text-dark-base dark:text-light-base">
                 You&apos;re on the list — check your inbox.
               </span>
@@ -86,7 +86,7 @@ export function FinalCTA() {
               'Bank-grade security',
             ].map((item) => (
               <span key={item} className="flex items-center gap-1.5">
-                <CheckCircle size={12} className="text-brand-primary" />
+                <CheckCircle size={12} className="text-emerald-500" />
                 {item}
               </span>
             ))}
