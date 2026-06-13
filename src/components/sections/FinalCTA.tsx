@@ -58,7 +58,7 @@ export function FinalCTA() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 type="submit"
-                className="flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-primary text-white font-bold text-sm cursor-pointer hover:bg-brand-dim transition-colors duration-200 whitespace-nowrap"
+                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-brand-primary text-white font-bold text-sm cursor-pointer hover:bg-brand-dim transition-colors duration-200 whitespace-nowrap"
               >
                 Get Started Free
                 <ArrowRight size={16} />
