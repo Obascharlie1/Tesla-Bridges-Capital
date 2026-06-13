@@ -100,7 +100,7 @@ export function Hero() {
               className="flex items-center justify-center lg:justify-start gap-3 mb-8"
             >
               <div className="w-6 h-px bg-brand-primary" />
-              <span className="text-xs font-bold tracking-widest text-brand-primary uppercase">
+              <span className="text-xs font-bold tracking-widest text-slate-400 uppercase">
                 Engineered for Speed
               </span>
             </motion.div>

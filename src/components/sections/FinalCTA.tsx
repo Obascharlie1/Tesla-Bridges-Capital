@@ -28,7 +28,7 @@ export function FinalCTA() {
           transition={{ duration: 0.6 }}
         >
           {/* Label */}
-          <span className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-6">
+          <span className="inline-block text-xs font-semibold tracking-widest text-slate-400 uppercase mb-6">
             The Bell Is Ringing
           </span>
 

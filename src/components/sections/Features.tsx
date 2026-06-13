@@ -25,7 +25,7 @@ export function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-4"
+            className="inline-block text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4"
           >
             The Arsenal
           </motion.span>
@@ -66,7 +66,7 @@ export function Features() {
                 </div>
 
                 {/* Tag */}
-                <span className="inline-block text-[10px] font-bold tracking-widest text-brand-primary uppercase mb-3 bg-brand-primary/10 px-2 py-0.5">
+                <span className="inline-block text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-3 bg-brand-primary/10 px-2 py-0.5">
                   {feature.tag}
                 </span>
 

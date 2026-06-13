@@ -33,7 +33,7 @@ export function Security() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-4"
+            className="inline-block text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4"
           >
             Security & Trust
           </motion.span>

@@ -22,7 +22,7 @@ export function HowItWorks() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-xs font-semibold tracking-widest text-brand-primary uppercase mb-4"
+            className="inline-block text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4"
           >
             Go Live
           </motion.span>
@@ -85,7 +85,7 @@ export function HowItWorks() {
                 </div>
 
                 <div className="max-w-xs mx-auto">
-                  <span className="text-[10px] font-bold text-brand-primary tracking-widest uppercase mb-2 block">
+                  <span className="text-[10px] font-bold text-slate-400 tracking-widest uppercase mb-2 block">
                     Step {step.step}
                   </span>
                   <h3 className="text-xl font-bold text-dark-base dark:text-light-base mb-3">
