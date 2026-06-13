@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { Upload, CheckCircle, FileText, ArrowLeft, Shield, Loader2 } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
 
 type DocType = 'passport' | 'drivers_license' | 'national_id'
 
@@ -98,55 +97,20 @@ export default function KYCPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!canSubmit || !userId) return
+    if (!canSubmit) return
     setLoading(true)
     setError('')
 
-    const supabase = createClient()
+    const form = new FormData()
+    form.append('front', frontFile!.file)
+    if (needsBack && backFile) form.append('back', backFile.file)
+    form.append('docType', docTypeLabels[docType])
 
-    // Upload front document
-    const frontExt  = frontFile!.file.name.split('.').pop()
-    const frontPath = `${userId}/front.${frontExt}`
-    const { error: frontErr } = await supabase.storage
-      .from('kyc-documents')
-      .upload(frontPath, frontFile!.file, { upsert: true })
+    const res = await fetch('/api/kyc/upload', { method: 'POST', body: form })
+    const json = await res.json()
 
-    if (frontErr) {
-      setError(`Upload failed: ${frontErr.message}`)
-      setLoading(false)
-      return
-    }
-
-    // Upload back document (if required)
-    let backPath: string | null = null
-    if (needsBack && backFile) {
-      const backExt = backFile.file.name.split('.').pop()
-      backPath = `${userId}/back.${backExt}`
-      const { error: backErr } = await supabase.storage
-        .from('kyc-documents')
-        .upload(backPath, backFile.file, { upsert: true })
-
-      if (backErr) {
-        setError('Failed to upload back document. Please try again.')
-        setLoading(false)
-        return
-      }
-    }
-
-    // Update profile with file paths and status
-    const { error: updateErr } = await supabase
-      .from('profiles')
-      .update({
-        kyc_status:       'Pending',
-        kyc_doc_type:     docTypeLabels[docType],
-        kyc_submitted_at: new Date().toISOString(),
-        kyc_front_url:    frontPath,
-        kyc_back_url:     backPath,
-      })
-      .eq('id', userId)
-
-    if (updateErr) {
-      setError(updateErr.message)
+    if (!res.ok) {
+      setError(json?.error ?? 'Upload failed. Please try again.')
       setLoading(false)
       return
     }
