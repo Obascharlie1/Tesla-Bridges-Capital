@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ArrowLeft, Copy, Check, CheckCircle, Loader2, Upload, FileText } from 'lucide-react'
 import { TopBar } from '@/components/dashboard/TopBar'
 
-const BTC_ADDRESS = 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'
+const BTC_ADDRESS = 'bc1qazx4cmj3m8n2952p28aqk6ntw6hr7d3sfm6jps'
 const BTC_RATE = 67420
 
 // 10×10 QR pattern (finder patterns + data)
