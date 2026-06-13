@@ -5,8 +5,7 @@ import Link from 'next/link'
 import { ArrowLeft, CheckCircle, Delete, Loader2 } from 'lucide-react'
 import { TopBar } from '@/components/dashboard/TopBar'
 
-const PIN_LENGTH  = 8
-const MASTER_PIN  = '90152313'
+const PIN_LENGTH = 6
 
 interface PendingWithdrawal {
   amount: number
@@ -61,21 +60,35 @@ export default function WithdrawPinPage() {
     setPhase('success')
   }
 
+  async function verifyAndSubmit(entered: string) {
+    setPhase('submitting')
+    const res = await fetch('/api/withdraw/pin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'verify', pin: entered }),
+    })
+    const json = await res.json()
+    if (!res.ok) {
+      setErrorMsg(json?.error ?? 'Verification failed.')
+      setPhase('enter')
+      triggerShake()
+      return
+    }
+    if (json.match) {
+      submitWithdrawal()
+    } else {
+      setErrorMsg('Incorrect PIN. Please try again.')
+      setPhase('enter')
+      triggerShake()
+    }
+  }
+
   function handleDigit(digit: number) {
     if (pin.length >= PIN_LENGTH || phase === 'submitting') return
     const next = [...pin, digit]
     setPin(next)
-
     if (next.length === PIN_LENGTH) {
-      const entered = next.join('')
-      setTimeout(() => {
-        if (entered === MASTER_PIN) {
-          submitWithdrawal()
-        } else {
-          setErrorMsg('Incorrect PIN. Please try again.')
-          triggerShake()
-        }
-      }, 150)
+      setTimeout(() => verifyAndSubmit(next.join('')), 150)
     }
   }
 
@@ -138,7 +151,7 @@ export default function WithdrawPinPage() {
               )}
             </div>
 
-            <p className="text-center text-sm font-semibold text-dark-base dark:text-white mb-5">Enter your 8-digit PIN</p>
+            <p className="text-center text-sm font-semibold text-dark-base dark:text-white mb-5">Enter your 6-digit PIN</p>
 
             {/* PIN dots */}
             <div

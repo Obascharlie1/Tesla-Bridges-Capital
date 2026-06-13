@@ -58,6 +58,53 @@ const DEPOSIT_METHODS = ['Bank Transfer', 'Wire Transfer', 'Bitcoin', 'PayPal', 
 
 /* ─── page ──────────────────────────────────────────────────────────────── */
 
+function AdminPinReset({ userId }: { userId: string }) {
+  const [pin,    setPin]    = useState('')
+  const [saving, setSaving] = useState(false)
+  const [msg,    setMsg]    = useState<{ ok: boolean; text: string } | null>(null)
+
+  async function handleReset(e: React.FormEvent) {
+    e.preventDefault()
+    if (!/^\d{4,6}$/.test(pin)) { setMsg({ ok: false, text: 'PIN must be 4–6 digits.' }); return }
+    setSaving(true)
+    const res = await fetch(`/api/admin/users/${userId}/pin`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pin }),
+    })
+    const json = await res.json()
+    setSaving(false)
+    if (res.ok) { setMsg({ ok: true, text: 'Withdrawal PIN reset.' }); setPin('') }
+    else         setMsg({ ok: false, text: json?.error ?? 'Failed.' })
+  }
+
+  return (
+    <section className="bg-light-base dark:bg-dark-card border border-light-border dark:border-dark-border rounded-xl">
+      <div className="px-5 py-4 border-b border-light-border dark:border-dark-border flex items-center gap-2">
+        <ShieldCheck size={15} className="text-brand-primary" />
+        <h2 className="text-sm font-bold text-dark-base dark:text-white">Withdrawal PIN</h2>
+      </div>
+      <form onSubmit={handleReset} className="p-5 space-y-3">
+        <p className="text-xs text-slate-500 dark:text-slate-400">Set or reset this user's withdrawal PIN.</p>
+        <input
+          type="text"
+          inputMode="numeric"
+          maxLength={6}
+          value={pin}
+          onChange={e => setPin(e.target.value.replace(/\D/g, ''))}
+          placeholder="Enter new PIN (4–6 digits)"
+          className="w-full px-4 py-2.5 border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-dark-base dark:text-white text-sm focus:outline-none focus:border-brand-primary transition-colors placeholder:text-slate-400 tracking-widest"
+        />
+        {msg && <p className={`text-xs font-medium ${msg.ok ? 'text-emerald-600 dark:text-emerald-400' : 'text-brand-primary'}`}>{msg.text}</p>}
+        <button type="submit" disabled={saving || !pin}
+          className="px-4 py-2 bg-brand-primary hover:bg-brand-dim disabled:opacity-60 text-white text-sm font-bold transition-colors flex items-center gap-2">
+          {saving ? <><Loader2 size={13} className="animate-spin" /> Saving…</> : 'Set PIN'}
+        </button>
+      </form>
+    </section>
+  )
+}
+
 export default function AdminUserDetailPage() {
   const params = useParams()
   const router = useRouter()
@@ -924,7 +971,10 @@ export default function AdminUserDetailPage() {
         )}
       </section>
 
-      {/* ── Section 6: Send Notification ───────────────────────────────── */}
+      {/* ── Section 6: Reset Withdrawal PIN ────────────────────────────── */}
+      <AdminPinReset userId={userId} />
+
+      {/* ── Section 7: Send Notification ───────────────────────────────── */}
       <section className="bg-light-base dark:bg-dark-card border border-light-border dark:border-dark-border rounded-xl">
         <div className="px-5 py-4 border-b border-light-border dark:border-dark-border flex items-center gap-2">
           <Bell size={15} className="text-brand-primary" />
